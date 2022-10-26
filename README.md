@@ -1,6 +1,6 @@
-> “These mist covered mountains
-> Are a home now for me
-> But my home is the lowlands
+> “These mist covered mountains <br>
+> Are a home now for me <br>
+> But my home is the lowlands <br>
 > And always will be”<br>
 
 This is the Nim rewrite of [the code in Go](https://github.com/aabbtree77/twinpeekz).
@@ -38,7 +38,7 @@ There are three ways: (i) global/static variables,
 
 Go: I tried all the three ways and chose the third option as it was remarkably simple, just use mydata.f(...) instead of the usual f(...) and f sees all the variables in mydata when called, meeting all the original callback signature requirements of f(...) as if mydata did not even exist. 
 
-Nim: Nim allows one to change [the scope of the functions with pragmas]https://nim-lang.org/docs/manual.html#types-procedural-type), IIAR. However, the callback functions are already defined with the "{.cdecl.}" pragma in the GLFW bindings which would not let the callbacks be turned into lambdas with "{.closure.}". So I went the global/static variable way.
+Nim: Nim allows one to change [the scope of the functions with pragmas](https://nim-lang.org/docs/manual.html#types-procedural-type), IIAR. However, the callback functions are already defined with the "{.cdecl.}" pragma in the GLFW bindings which would not let the callbacks be turned into lambdas with "{.closure.}". So I went the global/static variable way.
 
 ## GLTF Loading
 
@@ -51,7 +51,7 @@ The problem is that the Nim code reads all the images into a big intermediate Ni
 
 **Tricky point 3.** I missed "glGenerateMipmap(GL_TEXTURE_2D)" at first, and without it nothing seemed to work, unlike in the Go code. Debugging such OpenGL texture function misses is a lot harder than debugging mesh geometry.  
 
-## Rendering/OpenGL/C Access 
+## Rendering/OpenGL/C 
 
 This line bypassed the Go compiler, but was caught in Nim:
 
@@ -86,31 +86,31 @@ There is also [a pointless split between "vmath" and "glm"](https://github.com/t
 
 There are quite a few choices despite a tiny community. They all have minor intricate variations, i.e. consider [these GLFW function signatures](https://github.com/glfw/glfw/blob/a465c1c32e0754d3de56e01c59a0fef33202f04c/src/monitor.c#L306-L326):
 
-    ```c
-    GLFWAPI GLFWmonitor** glfwGetMonitors(int* count)
-    ```
+```c
+GLFWAPI GLFWmonitor** glfwGetMonitors(int* count)
+```
 
-    ```c
-    GLFWAPI GLFWmonitor* glfwGetPrimaryMonitor(void)
-    ```
+```c
+GLFWAPI GLFWmonitor* glfwGetPrimaryMonitor(void)
+```
 
-    Here GLFWmonitor is some opaque C struct hidden under platform specific layers, the "GLFWAPI" macro can be ignored. 
-    
-    Input: C semantics with __struct**__ and __struct*__.  
+Here "GLFWmonitor" is some opaque C struct hidden under platform specific layers, the "GLFWAPI" macro can be ignored. 
 
-    What do these output types become in Go and Nim bindings?
+Input: C semantics with __struct**__ and __struct*__.  
 
-    [Go: go-gl/glfw/v3.3](https://github.com/go-gl/glfw/blob/62640a716d485dcbf341a7c187227a4a99fb1eba/v3.3/glfw/monitor.go#L56-L83): __[]*struct__ and __*struct__.
+What do these output types become in Go and Nim bindings?
 
-    [Nim: treeform/staticglfw](https://github.com/treeform/staticglfw/blob/f6a40acf98466c3a11ab3f074a70d570c297f82b/src/staticglfw.nim#L429-L430): __ptr pointer__ and __pointer__.   
+[Go: go-gl/glfw/v3.3](https://github.com/go-gl/glfw/blob/62640a716d485dcbf341a7c187227a4a99fb1eba/v3.3/glfw/monitor.go#L56-L83): __[]*struct__ and __*struct__.
 
-    [Nim: nimgl/glfw](https://github.com/nimgl/nimgl/blob/309d6ed8164ad184ed5bbb171c9f3d9d1c11ff81/src/nimgl/glfw.nim#L1740-L1767): __ptr UncheckedArray[ptr object]__ and __ptr object__. Notice the missing pointer reported in [this issue](https://github.com/nimgl/nimgl/issues/54) which then got [fixed](https://github.com/nimgl/glfw/commit/52a06d468ac8e5f6afaf92b4070973cb0fb6c58c).
-    
-    [jyapayne/nim-glfw](https://github.com/jyapayne/nim-glfw/blob/master/src/glfw/glfw_standalone.nim): __ptr ptr object__, __ptr object__ and pragma.
-    
-    [gcr/turbo-mush](https://github.com/gcr/turbo-mush/blob/0ccdfb09946fcb5c5056b3fd94dd75e00272584a/glfw.nim#L950): __ptr ptr cint__, __ptr cint__.
+[Nim: treeform/staticglfw](https://github.com/treeform/staticglfw/blob/f6a40acf98466c3a11ab3f074a70d570c297f82b/src/staticglfw.nim#L429-L430): __ptr pointer__ and __pointer__.   
 
-    They are all fine, most likely. I chose "nim/glfw" as it looks to be the most consolidating and future-proof.
+[Nim: nimgl/glfw](https://github.com/nimgl/nimgl/blob/309d6ed8164ad184ed5bbb171c9f3d9d1c11ff81/src/nimgl/glfw.nim#L1740-L1767): __ptr UncheckedArray[ptr object]__ and __ptr object__. Notice the missing pointer reported in [this issue](https://github.com/nimgl/nimgl/issues/54) which then got [fixed](https://github.com/nimgl/glfw/commit/52a06d468ac8e5f6afaf92b4070973cb0fb6c58c).
+
+[jyapayne/nim-glfw](https://github.com/jyapayne/nim-glfw/blob/master/src/glfw/glfw_standalone.nim): __ptr ptr object__, __ptr object__ and pragma.
+
+[gcr/turbo-mush](https://github.com/gcr/turbo-mush/blob/0ccdfb09946fcb5c5056b3fd94dd75e00272584a/glfw.nim#L950): __ptr ptr cint__, __ptr cint__.
+
+They are all fine, most likely. I chose "nim/glfw" as it looks to be the most consolidating and future-proof.
     
 ## The Choice of OpenGL Bindings
 
@@ -220,13 +220,13 @@ libc.so.6 => /lib/x86_64-linux-gnu/libc.so.6 (0x00007f5e74b38000)
 /lib64/ld-linux-x86-64.so.2 (0x00007f5e7505d000)
 ```
 
-Sizes of the binaries: 4.7MB (Go), 2.0MB (Nim), 1.1MB (d:release), 977KB (Nim, d:danger). 
+The sizes of the binaries: 4.7MB (Go), 2.0MB (Nim), 1.1MB (d:release), 977KB (Nim, d:danger). 
 
 ## White Space
 
 Nim/Python white spaces bite in double loops where one needs to be extra careful not to push the last lines of the inner loop into the outter space, esp. when tabs are only two-spaced, esp. when the loops are long, esp. when editing/rewriting them later. I like "gofmt" with "vim-go" a lot more.
 
-Naked imports are not a problem at all with Nim, paradoxically. You get into definitions with the right tools very quickly (I use nvim), and the code becomes very readable and terse without those package namespaces. 
+Naked imports are not a problem at all with Nim, paradoxically. You get into definitions with the right tools very quickly (I use [alaviss/nim.nvim](https://github.com/alaviss/nim.nvim)), and the code becomes very readable and terse without those package namespaces. 
 
 Nim's "include" introduces duplication errors while "import" is demanding w.r.t. the manual markings of visibility. I got to think of everything as a separate module/package, while the Go "package system" made me think less. 
 
@@ -234,8 +234,10 @@ Nim's "include" introduces duplication errors while "import" is demanding w.r.t.
 
 A static non-GC language is a tough space to be in, if not hopeless. Way too many evolving features, nondebuggable code paths. People get clever. 
 
-If pressed, the choice between the archaic and the modern is 50-50 with no good answers. Nim will help with modules, packages, compilation, pleasant syntax and scope, alaviss/nim.nvim. None of this is decisive enough though. Googling is not very productive and you need to deal with FFI to C and clever people. Either way is not really about productivity. 
+If pressed, the choice between the archaic and the modern is 50-50 with no good answers. Nim will help with modules, packages, compilation, pleasant syntax and scope, alaviss/nim.nvim. There are quite a few hyper productive heroes in the Nim's OpenGL space, e.g. [treeform](https://github.com/treeform), [krux02](https://github.com/krux02)... None of this is decisive enough though. Googling is not very productive and you need to deal with FFI to C and a complex evolving language. Either way is not really about productivity. 
 
 In addition, programming desktop 3D seems to revolve around big libs and certain chunks of knowledge separated from the language: GLFW/SDL, GLTF/Assimp, MGL vector math, stb_image, OpenGL and GLSL.
 
-This makes me think that a "better C/C++" and a strive for universalism this way is a dead end. I now begin to appreciate the Unreal/Unity/Godot or the languages such as Go a lot more than I used to. Nim feels a bit like Julia in the scientific computing. One just needs a better packaged GPU-adapted open source Matlab instead of the whole Lisp-like software engineering layer with macros and static type annotations. We do have a decent solution in scientific computing (Python+Anaconda), but nothing like that exists in 3D.
+This makes me think that a "better C/C++" and a strive for universalism with the static non-GC path is a dead end. The problem is not really the abundance of features and bugs, but the people who literally want everything while having such limited resources. Multiple compiler backends, excessive compile time gymnastics, graphics, web, performance, productivity, parallelism, fancy types with proofs... It becomes the same C++ compile time caboodle every god damn time: Ada, ATS, D, Nim, Zig, Odin, C3, V, Jai...
+
+I now begin to appreciate the Unreal/Unity/Godot or the languages such as Go a lot more than I used to. Nim feels a bit like Julia in the scientific computing. One just needs a better packaged GPU-adapted open source Matlab instead of the whole Lisp-like software engineering layer with macros and static type annotations. We do have a decent solution in scientific computing (Python+Anaconda), but nothing like that exists in 3D.
