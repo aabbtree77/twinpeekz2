@@ -24,7 +24,75 @@ nimble install nimgl opengl glm flatty
 nim c -r --hints:off -d:release main.nim 
 ```
 
-# Comments
+## Nim Setup
+
+* Install Nim via [Choosenim](https://www.linuxhowto.net/how-to-install-nim-programming-language-on-linux/):
+
+    ```console
+    curl https://nim-lang.org/choosenim/init.sh -sSf | sh
+    ...
+    tokyo@tokyo-Z87-DS3H:~$ nim -v
+    Nim Compiler Version 1.6.8 [Linux: amd64]
+    Compiled at 2022-09-27
+    Copyright (c) 2006-2021 by Andreas Rumpf
+
+    git hash: c9f46ca8c9eeca8b5f68591b1abe14b962f80a4c
+    active boot switches: -d:release
+    ```
+
+    Set the path in ".bashrc" as indicated in the command prompt.
+
+    Consider a more specialized [text editor] which can at least highlight the Nim code.
+    My choice is [NeoVim](https://github.com/nim-lang/Nim/wiki/Editor-Support) as I prefer something simple snappy lightweight. Its Nim plugin is newer than that of Vim.
+
+* Install NeoVim:
+
+    ```console
+    sudo apt install neovim -y
+    mkdir $HOME/.config/nvim
+    ```
+
+* Install [Plug](https://github.com/junegunn/vim-plug#neovim):
+
+    ```console
+    sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
+         https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+    cd $HOME/.config/nvim
+    gedit init.vim     
+    ```
+
+* Install this [NeoVim plugin](https://github.com/alaviss/nim.nvim/issues/19) 
+  
+    Copy-paste and save this into init.vim:
+    
+    ```
+    call plug#begin('~/.vim/plugged')
+    Plug 'alaviss/nim.nvim'
+    call plug#end()  
+    
+    set nofoldenable
+    ```
+    
+    Add this line to ~/.vim/plugged/nim.nvim/syntax/nim.vim:
+    
+    ```
+    highlight link nimSugUnknown NONE
+    ```
+    
+    in order to remove red highlights for unknown symbols, clf. [this issue](https://github.com/alaviss/nim.nvim/issues/39).
+    
+    Run nvim, press Esc and :PlugInstall, :q, restart nvim. Use gd and ctrl+o to jump/get back into type/function definitions.
+    
+* Compile and run [gltfviewer](https://github.com/guzba/gltfviewer):
+
+    ```console
+    git clone https://github.com/guzba/gltfviewer.git $HOME/gltfviewer
+    cd $HOME/gltfviewer
+    nimble install
+    nim c -r ./src/gltfviewer.nim
+    ```    
+
+# Further Comments/Random Thoughts
 
 A perennial question is whether a modern static non-GC language such as Nim could become the one. I will share my experience/doubts about it.
 There are also a few tricky points and choices documented here in case someone or future me will use this code/rewrite it in some language X.
@@ -51,7 +119,7 @@ The problem is that the Nim code reads all the images into a big intermediate Ni
 
 **Tricky point 3.** I missed "glGenerateMipmap(GL_TEXTURE_2D)" at first, and without it nothing seemed to work, unlike in the Go code. Debugging such OpenGL texture function misses is a lot harder than debugging mesh geometry.  
 
-## Rendering/OpenGL/C 
+## Nim/C-FFI Peculiarities
 
 This line bypassed the Go compiler, but was caught in Nim:
 
@@ -88,9 +156,6 @@ There are quite a few choices despite a tiny community. They all have minor intr
 
 ```c
 GLFWAPI GLFWmonitor** glfwGetMonitors(int* count)
-```
-
-```c
 GLFWAPI GLFWmonitor* glfwGetPrimaryMonitor(void)
 ```
 
@@ -133,7 +198,7 @@ In Nim, there are two main cases revolving around the packages "opengl" and "nim
 
 2. **ptr cstring** in the package "nimgl/opengl": [Elliot Waite](https://github.com/elliotwaite/nim-opengl-tutorials-by-the-cherno/blob/cfce01842ef2bf6712747885c620c1f549454f67/ep15/shader.nim#L49) simply casts Nim's string to **cstring** and takes **addr**, without deallocations. [anon767](https://github.com/anon767/nimgl-breakout/blob/19d4b7638d26432a0daccce3433ea06f80ac3cdc/src/shader.nim#L23) does the same.      
 
-Having made the choice of "nimgl/glfw" previously one would be inclined to go with "nimgl/opengl", but the "opengl" case looks cleaner so you will find the latter in this code.
+Having made the choice of "nimgl/glfw" previously one would be inclined to go with "nimgl/opengl", but the "opengl" case looks cleaner so you will find the latter in this code. Notice that OpenGL is initialized with **"glInit()"** in "nim/opengl", but is is the function **loadExtensions()** that does it in "opengl". 
 
 ## Void*
 
