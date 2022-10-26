@@ -173,7 +173,7 @@ I tried all the three ways in Go and chose the third option as it was remarkably
 
     2. **ptr cstring** in the package "nimgl/opengl": [Elliot Waite](https://github.com/elliotwaite/nim-opengl-tutorials-by-the-cherno/blob/cfce01842ef2bf6712747885c620c1f549454f67/ep15/shader.nim#L49) simply casts Nim's string to **cstring** and takes **addr**, without deallocations. [anon767](https://github.com/anon767/nimgl-breakout/blob/19d4b7638d26432a0daccce3433ea06f80ac3cdc/src/shader.nim#L23) does the same.      
 
-    Having made the choice of "nimgl/glfw" previously one would be inclined to go with "nimgl/opengl", but the "opengl" case looks cleaner so you will find the latter in this code. Notice that OpenGL is initialized with **"glInit()"** in "nim/opengl", but is is the function **loadExtensions()** that does it in "opengl". 
+    Having made the choice of "nimgl/glfw" previously one would be inclined to go with "nimgl/opengl", but the "opengl" case looks cleaner so you will find the latter in this code. Notice that OpenGL is initialized with **"glInit()"** in "nim/opengl", but it is the function **loadExtensions()** that does it in "opengl". 
 
 * What is the Go/Nim answer to the type __void*__? Consider this OpenGL function:
 
@@ -187,9 +187,9 @@ I tried all the three ways in Go and chose the third option as it was remarkably
     const void * pointer);
     ```
 
-    Go with go-gl bindings: The type becomes __unsafe.Pointer__, clf. [this file](https://raw.githubusercontent.com/go-gl/gl/master/v4.1-core/gl/package.go). [The auxiliary "PtrOffset" function](https://github.com/go-gl/gl/blob/726fda9656d66a68688c09275cd7b8107083bdae/v4.1-core/gl/conversions.go#L62) turns an integer into a required pointer with the __unsafe.Pointer(uintptr(offset)__ expression. My Go code in this repo sets everywhere __PtrOffset(0)__ as an argument to glVertexAttribPointer.
+    Go with go-gl bindings: The type becomes __unsafe.Pointer__, clf. [this file](https://raw.githubusercontent.com/go-gl/gl/master/v4.1-core/gl/package.go). [The auxiliary "PtrOffset" function](https://github.com/go-gl/gl/blob/726fda9656d66a68688c09275cd7b8107083bdae/v4.1-core/gl/conversions.go#L62) turns an integer into a required pointer with the __unsafe.Pointer(uintptr(offset)__ expression. [The Go code](https://github.com/aabbtree77/twinpeekz) sets everywhere __PtrOffset(0)__ as an argument to glVertexAttribPointer.
 
-    Nim: The type is __pointer__, clf. [this file](https://raw.githubusercontent.com/nimgl/opengl/master/src/opengl.nim). [gltfviewer](https://github.com/guzba/gltfviewer/blob/c151dc0df66a7f9730e2f7ad4ee7170504a69864/src/gltfviewer/gltf.nim#L419) uses only __nil__ value, but the case with non-zero offsets can be found in [easygl](https://github.com/jackmott/easygl/blob/9a987b48409875ffb0521f3887ae25571ff60347/src/easygl.nim#L369), e.g. [here](https://github.com/jackmott/easygl/blob/9a987b48409875ffb0521f3887ae25571ff60347/examples/advanced_opengl/blending.nim#L111) which boils down to expressions such as 
+    Nim: The type is __pointer__, clf. [this file](https://raw.githubusercontent.com/nimgl/opengl/master/src/opengl.nim). [gltfviewer](https://github.com/guzba/gltfviewer/blob/c151dc0df66a7f9730e2f7ad4ee7170504a69864/src/gltfviewer/gltf.nim#L419) uses only __nil__ value, but the case with non-zero offsets can be found in [easygl](https://github.com/jackmott/easygl/blob/9a987b48409875ffb0521f3887ae25571ff60347/src/easygl.nim#L369), e.g. [here](https://github.com/jackmott/easygl/blob/9a987b48409875ffb0521f3887ae25571ff60347/examples/advanced_opengl/blending.nim#L111) which boils down to the expressions such as 
 
     ```nim
     cast[pointer](3*float32.sizeof()). 
@@ -258,10 +258,12 @@ I tried all the three ways in Go and chose the third option as it was remarkably
 
 * White Space. Nim/Python white spaces make the code fragile in double loops where one needs to be extra careful not to push the last lines of the inner loop into the outter space, esp. when tabs are only two-spaced, when the loops are long, when editing/rewriting takes place later. "gofmt" with "vim-go" is faster to type and more reliable.
 
-* Naked imports are not a problem at all with Nim, paradoxically. You get into definitions with the right tools very quickly (I use [alaviss/nim.nvim](https://github.com/alaviss/nim.nvim)), and the code becomes very readable and terse without those package namespaces. 
+* Naked imports are not a problem at all with Nim, paradoxically. You get into definitions with the right tools instantly (I use [alaviss/nim.nvim](https://github.com/alaviss/nim.nvim)), and the code becomes readable and terse without those package namespaces. 
 
-* Nim's "include" introduces duplication errors while "import" is demanding w.r.t. the manual markings of visibility. The Go module system made me think less about these things. 
+* Nim's "include" introduces duplication errors while "import" is demanding w.r.t. the manual markings of visibility. The Go module system made me think less about these things, but I still remember the nightmares with $GOPATH in the past.
 
-* A static non-GC language is a tough space to be in, if not hopeless, and it does not matter whether it is C/C++ or D/Zig/Rust/Nim etc. Way too many evolving features, nondebuggable code paths. People get clever. I am not sure about the productivity here. People literally want/experiment with everything (FFI with multiple compiler backends, move semantics, parallelism, types as proofs, macros, web, graphics, hot code reloading etc.), while having such limited resources.
+* A static non-GC language is a tough space to be in, if not hopeless, and it does not matter whether it is C/C++ or D/Zig/Rust/Nim etc. Way too many evolving features, nondebuggable code paths. Folks get clever. I am not sure about the productivity/quality here. PL designers literally want/experiment with everything (FFI with multiple compiler backends, move semantics, parallelism, types as proofs, macros, web, graphics, FP/OO, hot code reloading etc.), while having such limited resources.
 
-* Programming desktop 3D revolves around some big libs and certain chunks of knowledge separated from the language: GLFW/SDL, GLTF/Assimp, MGL vector math, stb_image, ImGui, OpenGL and GLSL.
+* Programming desktop 3D revolves around some big libs and certain chunks of knowledge which become language-agnostic: GLFW/SDL, GLTF/Assimp, MGL vector math, stb_image, ImGui, OpenGL and GLSL.
+
+* A punch line is still missing with this Nim 3D code and Nim in general. 
