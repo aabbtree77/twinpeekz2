@@ -83,7 +83,7 @@ nim c -r --hints:off -d:release main.nim
     
     Run nvim, press Esc and :PlugInstall, :q, restart nvim. Use gd and ctrl+o to jump/get back into type/function definitions.
     
-* Compile and run [gltfviewer](https://github.com/guzba/gltfviewer):
+* Compile and run [gltfviewer](https://github.com/guzba/gltfviewer) to test it all:
 
     ```console
     git clone https://github.com/guzba/gltfviewer.git $HOME/gltfviewer
@@ -285,7 +285,7 @@ libc.so.6 => /lib/x86_64-linux-gnu/libc.so.6 (0x00007f5e74b38000)
 /lib64/ld-linux-x86-64.so.2 (0x00007f5e7505d000)
 ```
 
-The sizes of the binaries: 4.7MB (Go), 2.0MB (Nim), 1.1MB (d:release), 977KB (Nim, d:danger). 
+The sizes of the binaries: 4.7MB (Go: default), 2.0MB (Nim: default), 1.1MB (Nim: d:release), 977KB (Nim: d:danger). 
 
 ## White Space
 
@@ -295,14 +295,14 @@ Naked imports are not a problem at all with Nim, paradoxically. You get into def
 
 Nim's "include" introduces duplication errors while "import" is demanding w.r.t. the manual markings of visibility. I got to think of everything as a separate module/package, while the Go "package system" made me think less. 
 
-## Final Thoughts
+## Final Thoughts/Rant
 
 A static non-GC language is a tough space to be in, if not hopeless. Way too many evolving features, nondebuggable code paths. People get clever. 
 
 If pressed, the choice between the archaic and the modern is 50-50 with no good answers. Nim will help with modules, packages, compilation, pleasant syntax and scope, alaviss/nim.nvim. There are quite a few hyper productive heroes in the Nim's OpenGL space, e.g. [treeform](https://github.com/treeform), [krux02](https://github.com/krux02)... None of this is decisive enough though. Googling is not very productive and you need to deal with FFI to C and a complex evolving language. Either way is not really about productivity. 
 
-In addition, programming desktop 3D seems to revolve around big libs and certain chunks of knowledge separated from the language: GLFW/SDL, GLTF/Assimp, MGL vector math, stb_image, OpenGL and GLSL.
+In addition, programming desktop 3D seems to revolve around some big libs and certain chunks of knowledge separated from the language: GLFW/SDL, GLTF/Assimp, MGL vector math, stb_image, OpenGL and GLSL.
 
-This makes me think that a "better C/C++" and a strive for universalism with the static non-GC path is a dead end. The problem is not really the abundance of features and bugs, but the people who literally want everything while having such limited resources. Multiple compiler backends, excessive compile time gymnastics, graphics, web, performance, productivity, parallelism, fancy types with proofs... It becomes the same C++ compile time caboodle every god damn time: Ada, ATS, D, Nim, Zig, Odin, C3, V, Jai...
+This makes me think that a "better C/C++" and a strive for universalism with the static non-GC path is a dead end. The problem is not really the compile time per se, but the people who literally want everything while having such limited resources. Multiple compiler backends, graphics, web, performance, productivity, parallelism, fancy types with proofs... It is the same story every god damn time: Ada, [Ark](https://github.com/ark-lang/ark), ATS, D, Nim, Zig, Odin, c3, kit, cyclone, [ion](https://github.com/tjpalmer/ion), quaint, myrddin, carp, carbon, v, jai...
 
 I now begin to appreciate the Unreal/Unity/Godot or the languages such as Go a lot more than I used to. Nim feels a bit like Julia in the scientific computing. One just needs a better packaged GPU-adapted open source Matlab instead of the whole Lisp-like software engineering layer with macros and static type annotations. We do have a decent solution in scientific computing (Python+Anaconda), but nothing like that exists in 3D.
