@@ -2,7 +2,7 @@ import nimgl/glfw
 import glm
 import math
 
-const Z_AXIS = vec3f(0.0, 0.0, 1.0)
+const Z_AXIS* = vec3f(0.0, 0.0, 1.0)
 
 type Camera* = object
   view*:        Mat4f

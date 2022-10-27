@@ -265,14 +265,26 @@ proc mainRendering*(scn: var Scene, rengine: RenderEngine, cam: var Camera): arr
     glClear(GL_DEPTH_BUFFER_BIT)
 
     var proj: Mat4f
-    let zNear = float32(0.0) #should these be different per light, adaptive?
+    let zNear = float32(0.1) #should these be different per light, adaptive?
     let zFar = float32(100.0)
-    proj = ortho(-20.0'f32, 20.0'f32, -15.0'f32, 15.0'f32, zNear, zFar)
+    proj = ortho(-30.0'f32, 30.0'f32, -30.0'f32, 30.0'f32, zNear, zFar)
+    
     #If dir and up are aligned LookAtV will output NaN matrices!!!
-    #Here pos dpes not matter, test that
-    let pos = vec3f(-4.0, 2.0, 5.0)
-    let up = vec3f(1.0, 0.0, 1.0)
-    var projView = proj * lookAt(pos, pos + lht.dir, up)
+     
+    #dir lht has no position, but we still need to position it
+    # so that the shadow map is centered. Anything outside that light-cam view
+    # won't cast a shadow. Expanding the ortho box looses resolution.
+    # Let's emit a ray from the Sponza floor center towards -lht.dir:  
+    let pos = vec3f(0.0, 0.0, 0.0) - (50.0.float32 * lht.dir)
+
+    # lookAt needs an up vector to build a reference frame
+    #let lhtdir_n = normalize(lht.dir)
+    #let pos_aux = vec3f(2.1, -1.7, -1.0)
+    #let up = lhtdir_n - (dot(pos_aux, lhtdir_n) * lhtdir_n)
+    
+    # up = Z_AXIS here is just a helper vector to get the x-axis and then a full ref frame 
+    # in the light-cam space. It should not be parallel to lht.dir  
+    var projView = proj * lookAt(pos, pos + lht.dir, Z_AXIS)
 
     #echo "Lights projView :"
     #echo projView

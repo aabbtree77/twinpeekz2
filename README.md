@@ -95,15 +95,17 @@ nim c -r --hints:off -d:release main.nim
 
 ## Random Notes Taken While Programming
 
-* Go is better at passing user data into the GLFW callbacks. There are three ways to deal with this problem: (i) global/static variables,
+* Go is better at passing user data into the GLFW callbacks. There are three ways in Go: (i) global/static variables,
 (ii) [glfwgetwindowuserpointer](https://discourse.glfw.org/t/what-is-a-possible-use-of-glfwgetwindowuserpointer/1294/2), and (iii) lambda functions.
-I tried all the three ways in Go and chose the third option as it was remarkably simple. Set mydata.f(...) instead of the usual f(...) as a callback. f then sees all the variables in mydata when called, meeting all the original signature requirements of f(...) as if mydata did not even exist. Nim allows one to change [the scope of the functions with pragmas](https://nim-lang.org/docs/manual.html#types-procedural-type), IIAR. However, the callback functions are already defined with the "{.cdecl.}" pragma in the GLFW bindings which would not let the callbacks be turned into lambdas with "{.closure.}". So I went the global/static variable way in Nim.
+The third option is remarkably simple. Set mydata.f(...) instead of the usual f(...) as a callback. f then sees all the variables in mydata when called, meeting all the original signature requirements of f(...) as if mydata did not even exist. 
 
-* [Nim's GLTF viewer](https://github.com/guzba/gltfviewer) is a lot slower than [this surprisingly fast Go library](https://github.com/qmuntal/gltf/issues/26), if compiled with the default flags. Part of the problem here is that the Nim code reads all the images into a big intermediate Nim image sequence before uploading them into the GPU buffers. I only made this even slower by pre-extracting the mesh data on the CPU as well. In addition, there is always some "ref object" in Nim waiting to be replaced with "object". Interestingly, this problem disappears when compiling with "d:release" or "d:danger" flags. Without them, it takes about 25s. to load Sponza, with them it is as instantaneous as the Go code. 
+  Nim allows one to change [the scope of the functions with pragmas](https://nim-lang.org/docs/manual.html#types-procedural-type), IIAR. However, the callback functions are already defined with the "{.cdecl.}" pragma in the GLFW bindings which would not let the callbacks be turned into lambdas with "{.closure.}". So I went the global/static variable way in Nim.
 
-* GLTF has the possibility of 1-byte or 2-byte numbers in the GLTF buffers. Notice that everything is converted to four-byte floats and integers before uploading them to the GPU even if initially data can be of different sizes, e.g. see the function "read_vert_indices". These wrong byte sizes usually evade the compiler. The bugs are found only with Renderdoc, test cube, and the correct working examples outside the code.
+* [Nim's GLTF viewer](https://github.com/guzba/gltfviewer) is a lot slower than [this surprisingly fast Go library](https://github.com/qmuntal/gltf/issues/26), if compiled with the default flags. Part of the problem here is that the Nim code reads all the images into a big intermediate Nim image sequence before uploading them into the GPU buffers. I only made this even slower by pre-extracting the mesh data on the CPU as well. In addition, there is always some "ref object" in Nim waiting to be replaced with "object". Remarkably, this problem disappears when compiling with "d:release" or "d:danger" flags. Without them, it takes about 25s. to load Sponza, with them it is as instantaneous as in the Go code. 
 
-* I missed "glGenerateMipmap(GL_TEXTURE_2D)" at first, and without it nothing seemed to work, unlike in the Go code. Debugging such OpenGL texture issues is a lot harder than debugging mesh geometry.  
+* GLTF spec allows 1-byte or 2-byte numbers in the GLTF buffers. In this code, everything is converted to four-byte floats and integers before uploading them to the GPU even if initially data can be of different sizes, e.g. see the function "read_vert_indices". I assumed every number is four-bytes in GLTF at first, and later fixed the bug only with Renderdoc, test cube, and the correct working example in Go.
+
+* I missed "glGenerateMipmap(GL_TEXTURE_2D)" in the Nim code, and without it nothing seemed to work, unlike in the Go code. Debugging such OpenGL texture issues is a lot harder than debugging mesh geometry.  
 
 * This line bypassed the Go compiler, but was caught in Nim:
 
@@ -115,9 +117,16 @@ I tried all the three ways in Go and chose the third option as it was remarkably
 
 * Nim's "distinct type" adds some friction with GLenum and GLint casting. The const/let/var mutability system often produces "cannot take an address of an expression" errors. Uploading constant data to the GPU demands sending pointers/addresses and the compiler does not allow the data to be immutable.
 
-* One can find a tricky case of "Mat4[system.float32]" vs. "Mat4f" when printing an array value in "main.nim" with "import glm" or without it. Without importing the library, the system treats the variable "WINDOW_STATE.cam.view" as type "Mat4f" which does not use the pretty printing operator $ overloaded in the package "glm". After importing "glm", the type becomes "Mat4[system.float32]" which picks up the pretty printing.
+* A tricky case of "Mat4[system.float32]" vs. "Mat4f" occurs when printing an array value in "main.nim" with "import glm" or without it. Without importing the library, the system treats the variable "WINDOW_STATE.cam.view" as type "Mat4f" which does not use the pretty printing operator $ overloaded in the package "glm". After importing "glm", the type becomes "Mat4[system.float32]" which picks up the pretty printing.
 
-* Nim's operator overloading shines, but there is a trade off with nonreachable code paths due to all the templates and overloading. Consider [this Go function](https://github.com/g3n/engine/blob/b5c63e94be77871a78a9062f816b90d3af58b6c1/math32/math.go#L105):
+* Nim's operator overloading, generics and templates make vector/matrix math even more compact than Matlab, look at this pretty vector swizzling in glm/vec.nim:
+
+    ```nim
+    proc cross*[T](v1,v2:Vec[3,T]): Vec[3,T] =
+      v1.yzx * v2.zxy - v1.zxy * v2.yzx  
+    ```
+
+    However, this compile time substitution layer is a bit scary if one recalls the C++ template errors. Consider [this Go function](https://github.com/g3n/engine/blob/b5c63e94be77871a78a9062f816b90d3af58b6c1/math32/math.go#L105):
 
     ```go
     func Sqrt(v float32) float32 {
@@ -125,9 +134,9 @@ I tried all the three ways in Go and chose the third option as it was remarkably
     } 
     ```
 
-    It won't impress a type theorist, but do we really need that whole layer with generics and code substitution here? If you get into "go generate" and templates [this way](https://github.com/go-gl/mathgl/blob/master/mgl32/matrix.tmpl) with the big lib mentality, then perhaps yes. Since Go version 1.18 one can use [generic types](https://planetscale.com/blog/generics-can-make-your-go-code-slower), but I would not bother.
+    It won't impress a type theorist, but do we really need that whole layer of problems here? If you get into "go generate" and templates [this way](https://github.com/go-gl/mathgl/blob/master/mgl32/matrix.tmpl) with the big lib mentality, then perhaps yes. Since Go version 1.18 one can use [generic types](https://planetscale.com/blog/generics-can-make-your-go-code-slower), but I would not bother.
 
-* There is [a pointless split between "vmath" and "glm"](https://github.com/treeform/vmath/issues/42). I went with the "glm" library as this is the one I used with Go and C++ before. I did not have to worry about any row-major vs column-major issues at all, though somebody did, before me ;).
+* There is [a pointless split between "vmath" and "glm"](https://github.com/treeform/vmath/issues/42). I went with the "glm" library as this is almost a 3D vector math standard. I did not have to worry about any row-major vs column-major issues at all, though somebody did, before me...
 
 * There are quite a few GLFW binding choices, despite a tiny community. Consider [these GLFW function signatures](https://github.com/glfw/glfw/blob/a465c1c32e0754d3de56e01c59a0fef33202f04c/src/monitor.c#L306-L326):
 
@@ -256,14 +265,12 @@ I tried all the three ways in Go and chose the third option as it was remarkably
 
     The sizes of the binaries: 4.7MB (Go: default), 2.0MB (Nim: default), 1.1MB (Nim: d:release), 977KB (Nim: d:danger). 
 
-* White Space. Nim/Python white spaces make the code fragile in double loops where one needs to be extra careful not to push the last lines of the inner loop into the outter space, esp. when tabs are only two-spaced, when the loops are long, when editing/rewriting takes place later. "gofmt" with "vim-go" is faster to type and more reliable.
+* White Space. Nim/Python white spaces make the code fragile in double loops where one needs to be extra careful not to push the last lines of the inner loop into the outter space, esp. when the "tabs" are only two-spaced, when the loops are long, when editing/rewriting takes place later. "gofmt" with "vim-go" is faster to type and more reliable.
 
 * Naked imports are not a problem at all with Nim, paradoxically. You get into definitions with the right tools instantly (I use [alaviss/nim.nvim](https://github.com/alaviss/nim.nvim)), and the code becomes readable and terse without those package namespaces. 
 
-* Nim's "include" introduces duplication errors while "import" is demanding w.r.t. the manual markings of visibility. The Go module system made me think less about these things, but I still remember the nightmares with $GOPATH in the past.
+* Nim's "include" introduces duplication errors while "import" is demanding w.r.t. the manual markings of visibility. The Go module system made me think less about these things.
 
-* A static non-GC language is a tough space to be in, if not hopeless, and it does not matter whether it is C/C++ or D/Zig/Rust/Nim etc. Way too many evolving features, nondebuggable code paths. Folks get clever. I am not sure about the productivity/quality here. PL designers literally want/experiment with everything (FFI with multiple compiler backends, move semantics, parallelism, types as proofs, macros, web, graphics, FP/OO, hot code reloading etc.), while having such limited resources.
+* Programming desktop 3D revolves around some big libs which become language-agnostic: GLFW/SDL, GLTF/Assimp, MGL vector math, stb_image, ImGui, OpenGL, GLSL... The elephant in the room is OpenGL, not C++.
 
-* Programming desktop 3D revolves around some big libs and certain chunks of knowledge which become language-agnostic: GLFW/SDL, GLTF/Assimp, MGL vector math, stb_image, ImGui, OpenGL and GLSL.
-
-* A punch line is still missing with this Nim 3D code and Nim in general. 
+* A punch line is still missing with this code and Nim in general.

@@ -2,7 +2,7 @@ import nimgl/glfw
 #import nimgl/opengl
 import opengl
 import glm #this changes echo mat4f type, no nice output without this
-import std/strutils
+#import std/strutils
 import std/typetraits
 
 import scene

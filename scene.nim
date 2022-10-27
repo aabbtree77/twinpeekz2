@@ -460,7 +460,7 @@ proc initScene*(): Scene =
   var lights: seq[Light]
 
   var light0 = Light(
-          dir:         vec3f(1.0, -0.9, -0.5),
+          dir:         vec3f(0.1, -0.6, -1.0),
           color:       vec3f(1.0 * 2.0, 0.8 * 2.0, 0.6 * 2.0),
           intensity:   900.0,
           shMapWidth:  4096,
