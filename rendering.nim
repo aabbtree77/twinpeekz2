@@ -275,7 +275,7 @@ proc mainRendering*(scn: var Scene, rengine: RenderEngine, cam: var Camera): arr
     # so that the shadow map is centered. Anything outside that light-cam view
     # won't cast a shadow. Expanding the ortho box looses resolution.
     # Let's emit a ray from the Sponza floor center towards -lht.dir:  
-    let pos = vec3f(0.0, 0.0, 0.0) - (50.0.float32 * lht.dir)
+    let pos = vec3f(0.0, 0.0, 0.0) - (50.0.float32 * lht.dir.normalize)
 
     # lookAt needs an up vector to build a reference frame
     #let lhtdir_n = normalize(lht.dir)
