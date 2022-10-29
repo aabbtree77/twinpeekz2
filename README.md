@@ -174,7 +174,7 @@ The third option is remarkably simple. Set mydata.f(...) instead of the usual f(
         
     In particular, let's focus on the third argument, i.e. ****string** which in reality is just a shader code, some ASCII text.
       
-    In Go with go-gl bindings, the type becomes __**uint8__ and the conversion is achieved with a special function [gl.Strs](https://github.com/go-gl/gl/blob/726fda9656d66a68688c09275cd7b8107083bdae/v2.1/gl/conversions.go#L90), clf. [the code by Nicholas Blaskey](https://github.com/NicholasBlaskey/gophergl/blob/6459203ed630d94f155c4a1dc8d0f427cda1b3fc/Open/gl/shader.go#L18). One needs to append Go strings with "null termination", i.e. "\x00". For the record, a similar function in [Ada](https://github.com/flyx/OpenGLAda/blob/60dc457f969216e1f814d52baaa2d4395bf00858/opengl/src/implementation/gl-files.adb). This gets messy.
+    In Go with go-gl bindings, the type becomes __**uint8__ and the conversion is achieved with a special function [gl.Strs](https://github.com/go-gl/gl/blob/726fda9656d66a68688c09275cd7b8107083bdae/v2.1/gl/conversions.go#L90), clf. [the code by Nicholas Blaskey](https://github.com/NicholasBlaskey/gophergl/blob/6459203ed630d94f155c4a1dc8d0f427cda1b3fc/Open/gl/shader.go#L18). One needs to append Go strings with "null termination", i.e. "\x00". For the record, a similar function in [Ada](https://github.com/flyx/OpenGLAda/blob/60dc457f969216e1f814d52baaa2d4395bf00858/opengl/src/implementation/gl-files.adb), [Zig](https://github.com/ziglibs/zgl/blob/9fc2524bbf2e1172a5cb218eca37dc99930a31db/zgl.zig#L711), Rust: [1](https://github.com/nukep/rust-opengl-util/blob/fc30c6e386b0a4510564f242d995c845472207d3/shader.rs#L30), [2](https://github.com/Nercury/rust-and-opengl-lessons/blob/55ed79f3f93c5e66af44b0cb3afd4fa0527199ff/lesson-03/src/render_gl.rs#L107). I do not see a deallocation in Zig/Rust?! This gets messy.
 
     In Nim, there are two main cases revolving around the packages "opengl" and "nimgl/opengl".
 
@@ -277,5 +277,6 @@ The third option is remarkably simple. Set mydata.f(...) instead of the usual f(
 
 * A punch line is still missing with this code, but it is a start. 
 
-* Nim is a surprisingly productive language that one would hardly expect in a static non-GC space. The productivity is on par with Go or even better. The case with **allocCStringArray** stated above favours Nim over Go or even Ada. Go saved a lot of time as the GLTF library to load meshes both to CPU and GPU already pre-existed, while Nim had only the GPU part. The Nim code is a lot more readable than Go in the GLTF/json case and with the most things touching C.
- 
+* Nim is a surprisingly productive language that one would hardly expect in a static non-GC space. The productivity is on par with Go or even better. The case with **allocCStringArray** stated above favours Nim over Go/Ada/Zig/Rust. 
+
+* Go saved a lot of time as the GLTF library to load meshes both to CPU and GPU already pre-existed, but I would not push Go in 3D.
