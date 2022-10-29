@@ -182,7 +182,9 @@ The third option is remarkably simple. Set mydata.f(...) instead of the usual f(
 
     2. **ptr cstring** in the package "nimgl/opengl": [Elliot Waite](https://github.com/elliotwaite/nim-opengl-tutorials-by-the-cherno/blob/cfce01842ef2bf6712747885c620c1f549454f67/ep15/shader.nim#L49) simply casts Nim's string to **cstring** and takes **addr**, without deallocations. [anon767](https://github.com/anon767/nimgl-breakout/blob/19d4b7638d26432a0daccce3433ea06f80ac3cdc/src/shader.nim#L23) does the same.      
 
-    Having made the choice of "nimgl/glfw" previously one would be inclined to go with "nimgl/opengl", but the "opengl" case looks cleaner so you will find the latter in this code. Notice that OpenGL is initialized with **"glInit()"** in "nim/opengl", but it is the function **loadExtensions()** that does it in "opengl". 
+    Having made the choice of "nimgl/glfw" previously one would be inclined to go with "nimgl/opengl", but the "opengl" case looks cleaner so you will find the latter in this code. OpenGL is initialized with **"glInit()"** in "nim/opengl", but it is the function **loadExtensions()** that does it in "opengl".
+    
+    Notice that **allocCStringArray** and **deallocCStringArray** are in the standard lib/system.nim module, while the correpsonding Go and Ada solutions do not exist at the language/standard lib level and are only found in the custom user-made OpenGL bindings.   
 
 * What is the Go/Nim answer to the type __void*__? Consider this OpenGL function:
 
@@ -269,8 +271,11 @@ The third option is remarkably simple. Set mydata.f(...) instead of the usual f(
 
 * Naked imports are not a problem at all with Nim, paradoxically. You get into definitions with the right tools instantly (I use [alaviss/nim.nvim](https://github.com/alaviss/nim.nvim)), and the code becomes readable and terse without those package namespaces. 
 
-* Nim's "include" introduces duplication errors while "import" is demanding w.r.t. the manual markings of visibility. The Go module system made me think less about these things.
+* Nim's "include" makes the compiler barf about duplication while "import" is demanding w.r.t. the manual markings of visibility. Function definition order within a file matters. Go made me think less about these things.
 
 * Programming desktop 3D revolves around some big libs which become language-agnostic: GLFW/SDL, GLTF/Assimp, MGL vector math, stb_image, ImGui, OpenGL, GLSL... The elephant in the room is OpenGL, not C++.
 
-* A punch line is still missing with this code and Nim in general.
+* A punch line is still missing with this code, but it is a start. 
+
+* Nim is a surprisingly productive language that one would hardly expect in a static non-GC space. The productivity is on par with Go or even better. The case with **allocCStringArray** stated above favours Nim over Go or even Ada. Go saved a lot of time as the GLTF library to load meshes both to CPU and GPU already pre-existed, while Nim had only the GPU part. The Nim code is a lot more readable than Go in the GLTF/json case and with the most things touching C.
+ 
