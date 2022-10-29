@@ -166,7 +166,7 @@ The third option is remarkably simple. Set mydata.f(...) instead of the usual f(
 * Let's examine the OpenGL bindings w.r.t. the OpenGL function
  
     ```c
-    void glShaderSource(	GLuint shader,
+    void glShaderSource(GLuint shader,
     GLsizei count,
     const GLchar **string,
     const GLint *length);
