@@ -263,9 +263,53 @@ The third option is remarkably simple. Set mydata.f(...) instead of the usual f(
     /lib64/ld-linux-x86-64.so.2 (0x00007f5e7505d000)
     ```
 
-    Where has my libGL gone? 
-
-    The sizes of the binaries: 4.7MB (Go: default), 2.0MB (Nim: default), 1.1MB (Nim: d:release), 977KB (Nim: d:danger). 
+    Where has my libGL gone? The sizes of the binaries: 4.7MB (Go: default), 2.0MB (Nim: default), 1.1MB (Nim: d:release), 977KB (Nim: d:danger). 
+    
+    It turns out that there are calls to the C function "dlopen" at the runtime, and the libs called by the latter are not known to
+    ldd, objdump, readelf which catch only what gets loaded at the pre-start of the program. Reading ["/proc/<PID>/maps"](https://www.baeldung.com/linux/show-shared-libraries-executables) does show a lot of additional dependencies. Here is a more compact output of [lsof](https://unix.stackexchange.com/questions/120015/how-to-find-out-the-dynamic-libraries-executables-loads-when-run) command (strace did not work):
+    
+    ```console
+    tokyo@tokyo-Z87-DS3H:~/twinpeekz2$ pidof main
+    15466
+    tokyo@tokyo-Z87-DS3H:~/twinpeekz2$ lsof -p 15466|grep mem
+    lsof: WARNING: can't stat() tracefs file system /sys/kernel/debug/tracing
+          Output information may be incomplete.
+    main    15466 tokyo  DEL    REG                0,1             7232 /memfd:/.glXXXXXX
+    main    15466 tokyo  mem    CHR            195,255              939 /dev/nvidiactl
+    main    15466 tokyo  mem    REG                8,3 32099568 6819477 /usr/lib/x86_64-linux-gnu/libnvidia-glcore.so.470.141.03
+    main    15466 tokyo  mem    REG                8,3    18456 6819487 /usr/lib/x86_64-linux-gnu/libnvidia-tls.so.470.141.03
+    main    15466 tokyo  DEL    REG                0,1             1025 /memfd:/.nvidia_drv.XXXXXX
+    main    15466 tokyo  mem    REG                8,3   639848 6819479 /usr/lib/x86_64-linux-gnu/libnvidia-glsi.so.470.141.03
+    main    15466 tokyo  mem    REG                8,3   112856 6823495 /usr/lib/x86_64-linux-gnu/libxcb-glx.so.0.0.0
+    main    15466 tokyo  mem    REG                8,3  1289616 6819471 /usr/lib/x86_64-linux-gnu/libGLX_nvidia.so.470.141.03
+    main    15466 tokyo  mem    REG                8,3    84584 6822362 /usr/lib/x86_64-linux-gnu/libdrm.so.2.4.0
+    main    15466 tokyo  mem    REG                8,3    14664 6823186 /usr/lib/x86_64-linux-gnu/librt.so.1
+    main    15466 tokyo  mem    REG                8,3    21448 6823130 /usr/lib/x86_64-linux-gnu/libpthread.so.0
+    main    15466 tokyo  mem    REG                8,3    14432 6822352 /usr/lib/x86_64-linux-gnu/libdl.so.2
+    main    15466 tokyo  mem    REG                8,3    14048 6821909 /usr/lib/x86_64-linux-gnu/libX11-xcb.so.1.0.0
+    main    15466 tokyo  mem    REG                8,3    18736 6821938 /usr/lib/x86_64-linux-gnu/libXinerama.so.1.0.0
+    main    15466 tokyo  mem    REG                8,3    30912 6821930 /usr/lib/x86_64-linux-gnu/libXfixes.so.3.1.0
+    main    15466 tokyo  mem    REG                8,3    43488 6821922 /usr/lib/x86_64-linux-gnu/libXcursor.so.1.0.2
+    main    15466 tokyo  mem    REG                8,3    47728 6821948 /usr/lib/x86_64-linux-gnu/libXrender.so.1.3.0
+    main    15466 tokyo  mem    REG                8,3    47504 6821946 /usr/lib/x86_64-linux-gnu/libXrandr.so.2.2.0
+    main    15466 tokyo  mem    REG                8,3    76320 6821936 /usr/lib/x86_64-linux-gnu/libXi.so.6.1.0
+    main    15466 tokyo  mem    REG                8,3    81640 6821928 /usr/lib/x86_64-linux-gnu/libXext.so.6.4.0
+    main    15466 tokyo  mem    REG                8,3    22872 6821964 /usr/lib/x86_64-linux-gnu/libXxf86vm.so.1.0.0
+    main    15466 tokyo  mem    REG                8,3 17167584 6821170 /usr/lib/locale/locale-archive
+    main    15466 tokyo  mem    REG                8,3    47472 6822872 /usr/lib/x86_64-linux-gnu/libmd.so.0.0.5
+    main    15466 tokyo  mem    REG                8,3    89096 6822206 /usr/lib/x86_64-linux-gnu/libbsd.so.0.11.5
+    main    15466 tokyo  mem    REG                8,3    26800 6821926 /usr/lib/x86_64-linux-gnu/libXdmcp.so.6.0.0
+    main    15466 tokyo  mem    REG                8,3    18720 6821915 /usr/lib/x86_64-linux-gnu/libXau.so.6.0.0
+    main    15466 tokyo  mem    REG                8,3   166504 6823527 /usr/lib/x86_64-linux-gnu/libxcb.so.1.1.0
+    main    15466 tokyo  mem    REG                8,3  1306280 6821911 /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0
+    main    15466 tokyo  mem    REG                8,3   141896 6821888 /usr/lib/x86_64-linux-gnu/libGLX.so.0.0.0
+    main    15466 tokyo  mem    REG                8,3   715200 6821893 /usr/lib/x86_64-linux-gnu/libGLdispatch.so.0.0.0
+    main    15466 tokyo  mem    REG                8,3   543056 6821882 /usr/lib/x86_64-linux-gnu/libGL.so.1.7.0
+    main    15466 tokyo  mem    REG                8,3  2216304 6822210 /usr/lib/x86_64-linux-gnu/libc.so.6
+    main    15466 tokyo  mem    REG                8,3   940560 6822861 /usr/lib/x86_64-linux-gnu/libm.so.6
+    main    15466 tokyo  mem    CHR              195,0              940 /dev/nvidia0
+    main    15466 tokyo  mem    REG                8,3   240936 6821873 /usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2
+    ```
 
 * White Space. Nim/Python white spaces make the code fragile in double loops where one needs to be extra careful not to push the last lines of the inner loop into the outter space, esp. when the "tabs" are only two-spaced, when the loops are long, when editing/rewriting takes place later. "gofmt" with "vim-go" is faster to type and more reliable.
 
