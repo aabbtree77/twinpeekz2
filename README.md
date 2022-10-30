@@ -265,8 +265,8 @@ The third option is remarkably simple. Set mydata.f(...) instead of the usual f(
 
     Where has my libGL gone? The sizes of the binaries: 4.7MB (Go: default), 2.0MB (Nim: default), 1.1MB (Nim: d:release), 977KB (Nim: d:danger). 
     
-    It turns out that there are calls to the C function "dlopen" at the runtime, and the libs called by the latter are not known to
-    ldd, objdump, readelf which catch only what gets loaded at the pre-start of the program. Reading ["/proc/<PID>/maps"](https://www.baeldung.com/linux/show-shared-libraries-executables) does show a lot of additional dependencies. Here is a more compact output of [lsof](https://unix.stackexchange.com/questions/120015/how-to-find-out-the-dynamic-libraries-executables-loads-when-run) command (strace did not work):
+    It turns out that there are calls to C function "dlopen" at the runtime by Nim and the bindings. The libs loaded by "dlopen" are not known to
+    ldd, lddtree, objdump, readelf which catch only what gets loaded at the pre-start of the program. Reading ["/proc/PID/maps"](https://www.baeldung.com/linux/show-shared-libraries-executables) does show the additional dependencies. Here is a more compact output of [lsof](https://unix.stackexchange.com/questions/120015/how-to-find-out-the-dynamic-libraries-executables-loads-when-run) command (strace did not work, but this [SO](https://unix.stackexchange.com/questions/226524/what-system-call-is-used-to-load-libraries-in-linux/462710#462710) might shed some light):
     
     ```console
     tokyo@tokyo-Z87-DS3H:~/twinpeekz2$ pidof main
@@ -310,6 +310,9 @@ The third option is remarkably simple. Set mydata.f(...) instead of the usual f(
     main    15466 tokyo  mem    CHR              195,0              940 /dev/nvidia0
     main    15466 tokyo  mem    REG                8,3   240936 6821873 /usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2
     ```
+  
+    A small binary does not mean much here as there are a lot of dynamic system dependencies. A few more useful links: the command "ldconfig -p" and [linker vs runtime 
+    loader](https://stackoverflow.com/questions/46224750/building-a-shared-object-library-ldd-does-not-show-specified-name).
 
 * White Space. Nim/Python white spaces make the code fragile in double loops where one needs to be extra careful not to push the last lines of the inner loop into the outter space, esp. when the "tabs" are only two-spaced, when the loops are long, when editing/rewriting takes place later. "gofmt" with "vim-go" is faster to type and more reliable.
 
