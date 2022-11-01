@@ -174,7 +174,9 @@ The third option is remarkably simple. Set mydata.f(...) instead of the usual f(
         
     In particular, let's focus on the third argument, i.e. ****string** which in reality is just a shader code, some ASCII text.
       
-    In Go with go-gl bindings, the type becomes __**uint8__ and the conversion is achieved with a special function [gl.Strs](https://github.com/go-gl/gl/blob/726fda9656d66a68688c09275cd7b8107083bdae/v2.1/gl/conversions.go#L90), clf. [the code by Nicholas Blaskey](https://github.com/NicholasBlaskey/gophergl/blob/6459203ed630d94f155c4a1dc8d0f427cda1b3fc/Open/gl/shader.go#L18). One needs to append Go strings with "null termination", i.e. "\x00". For the record, a similar function in [Ada](https://github.com/flyx/OpenGLAda/blob/60dc457f969216e1f814d52baaa2d4395bf00858/opengl/src/implementation/gl-files.adb), [Zig](https://github.com/ziglibs/zgl/blob/9fc2524bbf2e1172a5cb218eca37dc99930a31db/zgl.zig#L711), Rust: [1](https://github.com/nukep/rust-opengl-util/blob/fc30c6e386b0a4510564f242d995c845472207d3/shader.rs#L30), [2](https://github.com/Nercury/rust-and-opengl-lessons/blob/55ed79f3f93c5e66af44b0cb3afd4fa0527199ff/lesson-03/src/render_gl.rs#L107). I do not see a deallocation in Zig/Rust?! This gets messy.
+    In Go with go-gl bindings, the type becomes __**uint8__ and the conversion is achieved with a special function [gl.Strs](https://github.com/go-gl/gl/blob/726fda9656d66a68688c09275cd7b8107083bdae/v2.1/gl/conversions.go#L90), clf. [the code by Nicholas Blaskey](https://github.com/NicholasBlaskey/gophergl/blob/6459203ed630d94f155c4a1dc8d0f427cda1b3fc/Open/gl/shader.go#L18). One needs to append Go strings with "null termination", i.e. "\x00". 
+    
+    For the record, a similar function in [Ada](https://github.com/flyx/OpenGLAda/blob/60dc457f969216e1f814d52baaa2d4395bf00858/opengl/src/implementation/gl-files.adb), Zig: [1](https://github.com/ziglibs/zgl/blob/9fc2524bbf2e1172a5cb218eca37dc99930a31db/zgl.zig#L711), [2](https://github.com/danielabbott/Zig-Game-Engine/blob/7e26d073605e6e8de1e35234afe17b2711281835/src/WindowGraphicsInput/Shader.zig#L23), Rust: [1](https://github.com/nukep/rust-opengl-util/blob/fc30c6e386b0a4510564f242d995c845472207d3/shader.rs#L30), [2](https://github.com/Nercury/rust-and-opengl-lessons/blob/55ed79f3f93c5e66af44b0cb3afd4fa0527199ff/lesson-03/src/render_gl.rs#L107), [3](https://github.com/kooparse/fuel/blob/5d6a7396dc31feb98fa21afc7adc442ac7131522/fuel_render/src/shader.rs#L124)... Many of these Zig/Rust codes seem to ignore deallocation, but [Zig-Game-Engine](https://github.com/danielabbott/Zig-Game-Engine/blob/7e26d073605e6e8de1e35234afe17b2711281835/src/WindowGraphicsInput/Shader.zig#L23) is an exception. This is all rather [bureaucratic](https://github.com/danielabbott/Zig-Game-Engine/blob/7e26d073605e6e8de1e35234afe17b2711281835/src/RTRenderEngine/Shader.zig).
 
     In Nim, there are two main cases revolving around the packages "opengl" and "nimgl/opengl".
 
@@ -318,12 +320,13 @@ The third option is remarkably simple. Set mydata.f(...) instead of the usual f(
 
 * Naked imports are not a problem at all with Nim, paradoxically. You get into definitions with the right tools instantly (I use [alaviss/nim.nvim](https://github.com/alaviss/nim.nvim)), and the code becomes readable and terse without those package namespaces. 
 
-* Nim's "include" makes the compiler barf about duplication while "import" is demanding w.r.t. the manual markings of visibility. Function definition order within a file matters. Go made me think less about these things.
+* Nim's "include" makes the compiler barf about duplication while "import" is demanding w.r.t. the manual markings of visibility. Function definition order within a file matters. Go made me think less about these matters.
 
-* Programming desktop 3D revolves around some big libs which become language-agnostic: GLFW/SDL, GLTF/Assimp, MGL vector math, stb_image, ImGui, OpenGL, GLSL... The elephant in the room is OpenGL, not C++.
+* Programming desktop 3D revolves around some big libs which become rather language-agnostic: GLFW/SDL, GLTF/Assimp, MGL vector math, stb_image, ImGui, OpenGL, GLSL...
 
 * A punch line is still missing with this code, but it is a start. 
 
 * Nim is a surprisingly productive language that one would hardly expect in a static non-GC space. The productivity is on par with Go or even better. The case with **allocCStringArray** stated above favours Nim over Go/Ada/Zig/Rust. 
 
-* Go saved a lot of time as the GLTF library to load meshes both to CPU and GPU already pre-existed, but I would not push Go in 3D.
+* Go saved a lot of time as the GLTF library to load meshes both to CPU and GPU already pre-existed, but I would no longer push Go in 3D. Go is a new Erlang.
+
