@@ -327,4 +327,11 @@ The third option is remarkably simple. Set mydata.f(...) instead of the usual f(
 
 * A punch line is still missing.
 
+* cloc and [clocrt](https://github.com/michalspano/clocrt):
 
+| Language | files | blank | comment | code |
+| :------: | :---: | :---: | :-----: | :--: |
+| Nim      | 8     | 468   | 157     | 1368 |
+| GLSL     | 7     | 107   | 89      | 261  |
+| Markdown | 1     | 95    | 0       | 235  |
+| SUM:     | 16    | 670   | 246     | 1864 |
