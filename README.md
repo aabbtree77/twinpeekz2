@@ -1,11 +1,8 @@
-> “These mist covered mountains <br>
-> Are a home now for me <br>
-> But my home is the lowlands <br>
-> And always will be”<br>
+> “Everything is an object. However, objects aren't everything.”
 
 ## Introduction
 
-I successfully rewrote [this real time volumetric light rendering Go code](https://github.com/aabbtree77/twinpeekz) in Nim. Was it worth it? 
+I successfully rewrote [this real time volumetric light rendering Go code](https://github.com/aabbtree77/twinpeekz) in Nim.
 
 <table align="center">
     <tr>
@@ -322,11 +319,12 @@ The third option is remarkably simple. Set mydata.f(...) instead of the usual f(
 
 * Nim's "include" makes the compiler barf about duplication while "import" is demanding w.r.t. the manual markings of visibility. Function definition order within a file matters. Go made me think less about these matters.
 
-* Programming desktop 3D revolves around some big libs which become rather language-agnostic: GLFW/SDL, GLTF/Assimp, MGL vector math, stb_image, ImGui, OpenGL, GLSL...
-
-* A punch line is still missing with this code, but it is a start. 
-
-* Nim is a surprisingly productive language that one would hardly expect in a static non-GC space. The productivity is on par with Go or even better. The case with **allocCStringArray** stated above favours Nim over Go/Ada/Zig/Rust. 
-
 * Go saved a lot of time as the GLTF library to load meshes both to CPU and GPU already pre-existed, but I would no longer push Go in 3D. Go is a new Erlang.
+
+* Programming desktop 3D revolves around some big libs which become rather language-agnostic: GLFW/SDL, GLTF/Assimp, MGL vector math, stb_image, ImGui, OpenGL...
+
+* Nim is a surprisingly productive language that one would hardly expect in a static non-GC space. The productivity is on par with Go or even better if we use only value types and scope-based "life time management". No need to clutter code with pointers. 
+
+* A punch line is still missing.
+
 
