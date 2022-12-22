@@ -1,8 +1,9 @@
-> “Everything is an object. However, objects aren't everything.”
+> “If you have wings, why not fly?” 
+> - Nymphomaniac Vol. 1
 
 ## Introduction
 
-I successfully rewrote [this real time volumetric light rendering Go code](https://github.com/aabbtree77/twinpeekz) in Nim.
+If you don't really need a GC and all the pain is going to be OpenGL anyway, then why use it? This is a rewrite of [the Go code](https://github.com/aabbtree77/twinpeekz) in Nim.
 
 <table align="center">
     <tr>
