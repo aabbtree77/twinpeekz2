@@ -3,7 +3,7 @@
 
 ## Introduction
 
-If you don't really need a GC and all the pain is going to be OpenGL anyway, then why use it? This is a rewrite of [the Go code](https://github.com/aabbtree77/twinpeekz) in Nim.
+This is a rewrite of [the Go code (2021)](https://github.com/aabbtree77/twinpeekz) in Nim. In turn, the Go code was a rewrite of [the C++ work by Tomas Öhberg (2017)](https://gitlab.com/tomasoh/100_procent_more_volume) which itself was a rewrite/reimplementation of the research by [Balázs Tóth and Tamás Umenhoffer (EUROGRAPHICS 2009)](https://diglib.eg.org/handle/10.2312/egs.20091048.057-060). Some day, when and if WebGPU becomes reasonably usable (around the year 2040), I will rewrite this code again.
 
 <table align="center">
     <tr>
