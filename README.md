@@ -337,4 +337,6 @@ The third option is remarkably simple. Set mydata.f(...) instead of the usual f(
 
 * A punch line is still missing.
 
-
+<div align="center">
+  <img src="https://raw.githubusercontent.com/aabbtree77/twinpeekz2/main/nim-nimlang.gif" alt="nimlang-love">
+</div>
