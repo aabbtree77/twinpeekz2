@@ -3,7 +3,7 @@
 
 ## Introduction
 
-This is a rewrite of [the Go code (2021)](https://github.com/aabbtree77/twinpeekz) in Nim. In turn, the Go code was a rewrite of [the C++ work by Tomas Öhberg (2017)](https://gitlab.com/tomasoh/100_procent_more_volume) which itself was a rewrite/reimplementation of the research by [Balázs Tóth and Tamás Umenhoffer (EUROGRAPHICS 2009)](https://diglib.eg.org/handle/10.2312/egs.20091048.057-060). Some day, when and if WebGPU becomes reasonably usable (around the year 2040), I will rewrite this code again.
+This is a rewrite of [the Go code (2021)](https://github.com/aabbtree77/twinpeekz) in Nim. In turn, the Go code was a rewrite of [the C++ work by Tomas Öhberg (2017)](https://gitlab.com/tomasoh/100_procent_more_volume) which itself was a reimplementation of the research by [Balázs Tóth and Tamás Umenhoffer (EUROGRAPHICS 2009)](https://diglib.eg.org/handle/10.2312/egs.20091048.057-060).
 
 <table align="center">
     <tr>
@@ -18,10 +18,21 @@ This is a rewrite of [the Go code (2021)](https://github.com/aabbtree77/twinpeek
 
 ## Dependencies and Compilation
 
+To run this code, you will need to prepare `Sponza.gltf` as indicated in [the Go code (2021)](https://github.com/aabbtree77/twinpeekz). Afterwards, adjust the absolute path and possibly file name inside this repo file `scene.nim`, lines 382, 383. Mine are the following:
+
+```nim
+const folderPath = "/home/tokyo/Sponza_GLTF2/"
+const gltfFileToLoad = folderPath & "Sponza.gltf"
+```
+
+Setup Nim, git clone this repo, and run
+
 ```console
 nimble install nimgl opengl glm flatty
 nim c -r --hints:off -d:release main.nim 
 ```
+
+See also some details below.
 
 ## Nim Setup
 
@@ -82,7 +93,7 @@ nim c -r --hints:off -d:release main.nim
     
     Run nvim, press Esc and :PlugInstall, :q, restart nvim. Use gd and ctrl+o to jump/get back into type/function definitions.
     
-* Compile and run [gltfviewer](https://github.com/guzba/gltfviewer) to test it all:
+* Optional: compile and run [gltfviewer](https://github.com/guzba/gltfviewer) to test it all:
 
     ```console
     git clone https://github.com/guzba/gltfviewer.git $HOME/gltfviewer
@@ -91,6 +102,21 @@ nim c -r --hints:off -d:release main.nim
     nim c -r ./src/gltfviewer.nim
     ```    
 
+    Note [the issues](https://github.com/guzba/gltfviewer/issues), esp. [this one](https://github.com/guzba/gltfviewer/issues/8), which requires adding `windy` inside `gltfviewer/src/gltfviewer.nim`
+    
+    ```nim 
+    import gltfviewer/gltf, gltfviewer/shaders, opengl, os, windy, strformat,
+    times, vmath, strutils
+    ```
+    
+    and inside `gltfviewer.nimble`
+    
+    ```nim
+    requires "windy >= 0.0.0"
+    ```
+    
+    prior to running nimble install.
+    
 ## Random Notes Taken While Programming
 
 * Go is better at passing user data into the GLFW callbacks. There are three ways in Go: (i) global/static variables,
@@ -332,10 +358,6 @@ The third option is remarkably simple. Set mydata.f(...) instead of the usual f(
   | SUM:     | 16    | 670   | 246     | 1864 |
 
 * Programming desktop 3D revolves around some big libs which become rather language-agnostic: GLFW/SDL, GLTF/Assimp, MGL vector math, stb_image, ImGui, OpenGL...
-
-* Nim is a surprisingly productive language that one would hardly expect in a static non-GC space. The productivity is on par with Go or even better if we use only value types and scope-based "life time management". No need to clutter code with pointers. 
-
-* A punch line is still missing.
 
 <div align="center">
   <img src="https://raw.githubusercontent.com/aabbtree77/twinpeekz2/main/nim-nimlang.gif" alt="nimlang-love">
