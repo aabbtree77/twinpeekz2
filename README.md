@@ -362,3 +362,5 @@ The third option is remarkably simple. Set mydata.f(...) instead of the usual f(
 <div align="center">
   <img src="https://raw.githubusercontent.com/aabbtree77/twinpeekz2/main/nim-nimlang.gif" alt="nimlang-love">
 </div>
+
+* Minor Update (2025). I have abandoned Nim as it is too advanced for me: compile time metaprogramming, move semantics, inheritance, "case objects", "ref object", procedures which can be turned to closures with a pragma, operator and procedure overloading, hot code reloading, linear types, "proof engine", "type classes" (concepts or traits), interop with the C++ templates... See ["Nim Nuggets: Systems Programming & Metaprogramming Magic" by Aditya Siram](https://www.youtube.com/watch?v=d2VRuZo2pdA&t=15s&ab_channel=StrangeLoopConference). I prefer Odin as it is the only low level language which is not an oil tanker, see [Languages I considered using before Odin by Rickard Andersson](https://www.youtube.com/watch?v=vFFcCLzOOyw&t=3333s&ab_channel=RickardAndersson%28gonz%29).   
