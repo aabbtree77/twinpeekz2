@@ -363,7 +363,7 @@ The third option is remarkably simple. Set mydata.f(...) instead of the usual f(
   <img src="https://raw.githubusercontent.com/aabbtree77/twinpeekz2/main/nim-nimlang.gif" alt="nimlang-love">
 </div>
 
-* Minor Update (2025). Some food for thought:
+* Minor Edit (2025). Some Food for Thought:
 
     ["Nim Nuggets: Systems Programming & Metaprogramming Magic" by Aditya Siram](https://www.youtube.com/watch?v=d2VRuZo2pdA&t=15s&ab_channel=StrangeLoopConference)
     
