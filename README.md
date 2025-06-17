@@ -363,17 +363,13 @@ The third option is remarkably simple. Set mydata.f(...) instead of the usual f(
   <img src="https://raw.githubusercontent.com/aabbtree77/twinpeekz2/main/nim-nimlang.gif" alt="nimlang-love">
 </div>
 
-* Minor Update (2025). Is there a better C?
+* Minor Update (2025). Some food for thought:
 
-    Nim is beautiful and fun, see ["Nim Nuggets: Systems Programming & Metaprogramming Magic" by Aditya Siram](https://www.youtube.com/watch?v=d2VRuZo2pdA&t=15s&ab_channel=StrangeLoopConference). 
+    ["Nim Nuggets: Systems Programming & Metaprogramming Magic" by Aditya Siram](https://www.youtube.com/watch?v=d2VRuZo2pdA&t=15s&ab_channel=StrangeLoopConference)
     
-    At the same time, it misses the essential construct "type C = A or B" and there are ongoing issues of fitting sum types: [2024](https://github.com/nim-lang/RFCs/issues/548), [2025](https://github.com/nim-lang/RFCs/issues/559). Nim's [object variants](https://nim-lang.org/docs/manual.html#types-object-variants) used to be a mess, but [the situation is getting better](https://forum.nim-lang.org/t/9537). Exhaustiveness checks are not the default and need to be enforced with a compiler flag --warning:CaseIncomplete:hint.
-    
-    Low level memory management is a grey area in Nim. At the simplest level, one can get by with [compiler flags](https://nim-lang.org/docs/mm.html) and deciding on the use of object vs ref object. A ref is like shared_ptr in C++, nice, but hurts the performance. There is also a manual pointer [ptr](https://nim-lang.github.io/Nim/manual.html#aliasing_1) which I have used once or twice in this whole code (with the GLFW and to get some data from the GPU). Allocators are not much supported by the language and would require digging the forum and GitHub. In Zig and Odin allocators are front-and-center.
-    
-    The Nim compiler seems very complex. Compare [ast.nim](https://github.com/nim-lang/Nim/blob/devel/compiler/ast.nim) with [ast.odin](https://github.com/odin-lang/Odin/blob/master/core/odin/ast/ast.odin), night and day.
-    
-     Odin is among a few mature modern low level languages which are not compile-time oil tankers, see [Languages I considered using before Odin by Rickard Andersson](https://www.youtube.com/watch?v=vFFcCLzOOyw&t=3333s&ab_channel=RickardAndersson%28gonz%29). Another one would be Zig which comes as a close second after Odin in Rickard Andersson's list. [V](https://github.com/vlang/v) and [Hare](https://harelang.org/) deserve to be mentioned too. Both are minimalist non-GC sum type-based languages.
+    [Nim JSON parsing is 30 times slower than Node.JS by Alexey Petrushin](https://forum.nim-lang.org/t/8074)
      
-     Another interesting experience sharing is Richard Feldman's complete rewriting of [the Roc compiler in Zig instead of Rust](https://gist.github.com/rtfeldman/77fb430ee57b42f5f2ca973a3992532f). Some interesting details there, including yet another win for recursive descent over parser combinators.
+    [Why Zig over Rust? by Richard Feldman](https://gist.github.com/rtfeldman/77fb430ee57b42f5f2ca973a3992532f)
+    
+    [Languages I considered using before Odin by Rickard Andersson](https://www.youtube.com/watch?v=vFFcCLzOOyw&t=3333s&ab_channel=RickardAndersson%28gonz%29)
     
