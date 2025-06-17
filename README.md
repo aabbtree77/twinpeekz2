@@ -371,9 +371,9 @@ The third option is remarkably simple. Set mydata.f(...) instead of the usual f(
     
     Low level memory management is a grey area in Nim. At the simplest level, one can get by with [compiler flags](https://nim-lang.org/docs/mm.html) and deciding on the use of object vs ref object. A ref is like shared_ptr in C++, nice, but hurts the performance. There is also a manual pointer [ptr](https://nim-lang.github.io/Nim/manual.html#aliasing_1) which I have used once or twice in this whole code (with the GLFW and to get some data from the GPU). Allocators are not much supported by the language and would require digging the forum and GitHub. In Zig and Odin allocators are front-and-center.
     
-    I do not know if it matters, but the Nim compiler seems very complex. Compare [ast.nim](https://github.com/nim-lang/Nim/blob/devel/compiler/ast.nim) with [ast.odin](https://github.com/odin-lang/Odin/blob/master/core/odin/ast/ast.odin), night and day.
+    The Nim compiler seems very complex. Compare [ast.nim](https://github.com/nim-lang/Nim/blob/devel/compiler/ast.nim) with [ast.odin](https://github.com/odin-lang/Odin/blob/master/core/odin/ast/ast.odin), night and day.
     
-     Odin is likely the only mature modern (sum types, defer, no OO...) low level language which is not a compile time oil tanker, see [Languages I considered using before Odin by Rickard Andersson](https://www.youtube.com/watch?v=vFFcCLzOOyw&t=3333s&ab_channel=RickardAndersson%28gonz%29).  
+     Odin is among a few mature modern low level languages which are not compile-time oil tankers, see [Languages I considered using before Odin by Rickard Andersson](https://www.youtube.com/watch?v=vFFcCLzOOyw&t=3333s&ab_channel=RickardAndersson%28gonz%29). Another one would be Zig which comes as a close second after Odin in Rickard Andersson's list. [V](https://github.com/vlang/v) and [Hare](https://harelang.org/) deserve to be mentioned too. Both are minimalist non-GC sum type-based languages.
+     
+     Another interesting experience sharing is Richard Feldman's complete rewriting of [the Roc compiler in Zig instead of Rust](https://gist.github.com/rtfeldman/77fb430ee57b42f5f2ca973a3992532f). Some interesting details there, including yet another win for recursive descent over parser combinators.
     
-    [V](https://github.com/vlang/v) and [Hare](https://harelang.org/) also have sum types and follow the philosophy of Go (Oberon).
-        
