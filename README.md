@@ -369,14 +369,15 @@ The third option is remarkably simple. Set mydata.f(...) instead of the usual f(
     
     [Nim JSON parsing is 30 times slower than Node.JS by Alexey Petrushin](https://forum.nim-lang.org/t/8074)
     
-    [Languages I considered using before Odin by Rickard Andersson](https://www.youtube.com/watch?v=vFFcCLzOOyw&t=3333s&ab_channel=RickardAndersson%28gonz%29)
-    
-    [Why Zig over Rust? by Richard Feldman](https://gist.github.com/rtfeldman/77fb430ee57b42f5f2ca973a3992532f)
-    
     Mummy: the return of the ancient way (threads vs async): [forum-nim-9683](https://forum.nim-lang.org/t/9683), [guzba](https://github.com/guzba/mummy), [niminem/neel](https://github.com/Niminem/Neel/pull/23)
     
     [Nim Destructors](https://nim-lang.org/docs/destructors.html)
     
     [Nim 2.0: "Dynamic data structures are pointers on the stack to heap data, where the lifetime is managed by the stack frame."](https://news.ycombinator.com/item?id=36955806)
     
+    [Why Zig over Rust? by Richard Feldman](https://gist.github.com/rtfeldman/77fb430ee57b42f5f2ca973a3992532f)
+    
+    [Languages I considered using before Odin by Rickard Andersson](https://www.youtube.com/watch?v=vFFcCLzOOyw&t=3333s&ab_channel=RickardAndersson%28gonz%29)
+    
+    [Why Go? #411](https://github.com/microsoft/typescript-go/discussions/411)
     
