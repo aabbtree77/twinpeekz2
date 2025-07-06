@@ -346,7 +346,7 @@ The third option is remarkably simple. Set mydata.f(...) instead of the usual f(
 
 * Nim's "include" makes the compiler barf about duplication while "import" is demanding w.r.t. the manual markings of visibility. Function definition order within a file matters. Go made me think less about these matters.
 
-* Go saved a lot of time as the GLTF library to load meshes both to CPU and GPU already pre-existed, but I would no longer push Go in 3D. Go is a new Erlang.
+* Go saved time due to its GLTF library to load meshes both to CPU and GPU.
 
 * cloc and [clocrt](https://github.com/michalspano/clocrt):
 
