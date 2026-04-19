@@ -20,11 +20,13 @@ This is a rewrite of [the Go code (2021)](https://github.com/aabbtree77/twinpeek
 
 I like Go. It is well defined despite its warts: GC, errors as values, clarity over magic, lots of code on github, AI can generate it well. However, Go totally lacks succinctness. Errors as values virtually doubles the amount of code, and you have to think about "what ifs" perpetually which is very annoying in prototyping and projects where you control everything, and in any code reading. Go feels like C, but you no longer have those fast C loops and hacking capacity.
 
-Nim is the opposite. GC? Errors as values? Magic? Anything w.r.t. github, AI? Undefined. Nim can be anything. It will be annoying as hell to read some 3rd party codes in Nim, things will be evolving, under discussions, with complex features, broken edge cases, and inconsistencies.
+Nim is the opposite. GC? Errors as values? Magic? Anything w.r.t. github, AI? Undefined. Nim can be anything. It will be annoying as hell to read some 3rd party codes in Nim, things will be evolving, under discussions, with complex features, macros, broken edge cases, and inconsistencies.
 
-On the other hand, in a fully controlled environment, Nim is a paradise of a language. It is like a personal constructor, can be as fast as C, can be as high level as F#. You choose the subset, the paradigm.
+On the other hand, in a fully controlled environment, Nim is a paradise of a language. It is like a personal constructor, can be as fast as C, can be as high level as F#, or just a better C, or a better Go with const/let variables, no pointers, and no if err!= nil in your face. You choose the subset, the paradigm.
 
-Odin, Jai, or god forbid Rust? These are plagued by errors as values with a lot of memory management infra, e.g. custom allocators or life tracking, which can make things faster or more reliable, but like 2/3 of your code are now just error handling and say custom allocators, with some propagation of context, lifetimes and a lot of nonsense besides what is needed to solve the problem at hand. Valuable for production and teams, quite ugly for prototyping, hacking, and building stuff alone. Same holds for Fortran, Pascal, Ada, but Nim is different, just like C is different.
+Odin, Jai, or god forbid Rust? These are plagued by errors as values with memory management crapola, e.g. custom allocators or life tracking, which can make things faster or more reliable, but like 2/3 of your code are now just error handling and, say, custom allocators. Valuable for extra performance, production, teams, quite ugly for prototyping. Same holds for Fortran, Pascal, Ada, but Nim is different, just like C is different.
+
+Compare [this Nim code](https://rosettacode.org/wiki/Word_frequency#Nim) to [the one in Go](https://rosettacode.org/wiki/Word_frequency#Go). Go is decent and can even be better for a team, large code bases, but its infamous error handling [generates memes](https://x.com/NateTheFinch/status/899730215957561344).
 
 ## Dependencies and Compilation
 
