@@ -18,13 +18,15 @@ This is a rewrite of [the Go code (2021)](https://github.com/aabbtree77/twinpeek
 
 ## Why Nim?!
 
-Go is supersolid, but when one rewrites C++ codes such as [smallpt](https://www.kevinbeason.com/smallpt/) in Go, they run 2-3x slower. The Go pipeline cannot end with gcc -O3 -march=native -ffast-math -mfma. Nim and D do not have this problem.
+Go is [supersolid](https://github.com/aabbtree77/graceful), but when one rewrites C++ codes such as [smallpt](https://www.kevinbeason.com/smallpt/) in Go, they run 2-3x slower. The Go pipeline cannot end with gcc -O3 -march=native -ffast-math -mfma. Nim and D do not have this problem.
 
-However, unlike Go, these two add so much complexity... Just like Ada/Rust.
+However, unlike Go, these two add so much accidental complexity... Just like Ada/Rust/C++...
 
-C3, V, Odin are more promising as they are simpler, but this is hopeless. gonz has been advocating Odin for a while, and finally went [back to C](https://www.youtube.com/watch?v=vBSn8T679XY&t=1508s).
+C3, V, Odin are more promising as they are simpler, but they lack the coolness factor. gonz has been advocating Odin for a while, but he is now [back at C](https://www.youtube.com/watch?v=vBSn8T679XY&t=1508s). There are no answers, only choices.
 
-There are no answers, only choices. No really good choices, TBH.
+I prefer Nim as it is the best looking C frontend, treat it this way. Nim becomes a mess when one digs too deep or tries to read someone else's code. It is like a fancy personal constructor. [The Nim forum](https://forum.nim-lang.org/t/8333) and [the docs](https://nim-lang.org/documentation.html) are very educational not just about Nim, but also about ambitious languages and their design. The same holds for [the D language forum](https://forum.dlang.org/thread/cowxgpjphtkzpgawnjae@forum.dlang.org?page=1). These are the best places to learn about programming, not books, not universities, not github.
+
+If Go is MT07, Nim/D are like ZX-4RR/CBR600RR. C is Hayabusa...
 
 ## Dependencies and Compilation
 
