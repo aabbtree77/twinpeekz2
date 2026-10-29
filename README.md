@@ -18,11 +18,13 @@ This is a rewrite of [the Go code (2021)](https://github.com/aabbtree77/twinpeek
 
 ## Why Nim?!
 
-Go is solid for servers/backend/large infra (http router in stdlib, sqlc, cross-compiling to ARM, zero magic, fast compilation), but I do not fancy pointers and errors as values everywhere in your face. 
+Go is supersolid, but when one rewrites C++ codes such as [smallpt](https://www.kevinbeason.com/smallpt/) in Go, they run 2-3x slower. The Go pipeline cannot end with gcc -O3 -march=native -ffast-math -mfma. Nim and D do not have this problem.
 
-Rust, Odin, Zig, Jai... They all go for errors as values and add even more extra baggage: custom allocators, Mendeleev tables of smart pointers, compile time shenanigans. That means 2/3 of your code is just that. This is horrible to read, write, debug. Disgusting to prototype. Ada is also in this category.
+However, unlike Go, these two add so much complexity... Just like Ada/Rust.
 
-Nim has a lot of nonsense too (move semantics, macros, endless pragmas, identity crisis, unreadable optimized codes like json parsing), but I fancy it as a personal constructor because it is a succinct beautiful language when you control everything and can avoid garbage. More succinct than anything procedural and low level out there. Compare [this Nim code](https://rosettacode.org/wiki/Word_frequency#Nim) even to [the one in Go without error checks.](https://rosettacode.org/wiki/Word_frequency#Go) Also look how much drama [Ada](https://rosettacode.org/wiki/Word_frequency#Ada) creates. [COBOL](https://rosettacode.org/wiki/Word_frequency#COBOL) takes the cake though. 
+C3, V, Odin are more promising as they are simpler, but this is hopeless. gonz has been advocating Odin for a while, and finally went [back to C](https://www.youtube.com/watch?v=vBSn8T679XY&t=1508s).
+
+There are no answers, only choices. No really good choices, TBH.
 
 ## Dependencies and Compilation
 
@@ -386,6 +388,8 @@ The third option is remarkably simple. Set mydata.f(...) instead of the usual f(
     [Why Zig over Rust? by Richard Feldman](https://gist.github.com/rtfeldman/77fb430ee57b42f5f2ca973a3992532f)
     
     [Languages I considered using before Odin by Rickard Andersson](https://www.youtube.com/watch?v=vFFcCLzOOyw&t=3333s&ab_channel=RickardAndersson%28gonz%29)
+    
+    [Using C in 2026 is pretty good by Rickard Andersson](https://www.youtube.com/watch?v=vBSn8T679XY&t=1508s)
     
     [Why Go? #411](https://github.com/microsoft/typescript-go/discussions/411)
     
