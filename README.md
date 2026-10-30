@@ -16,17 +16,25 @@ This is a rewrite of [the Go code (2021)](https://github.com/aabbtree77/twinpeek
     </tr>
 </table>
 
-## Why Nim?!
+## Nim?! Write in C...
 
 Go is [supersolid](https://github.com/aabbtree77/graceful), but when one rewrites C++ codes such as [smallpt](https://www.kevinbeason.com/smallpt/) in Go, they run 2-3x slower. The Go pipeline cannot end with gcc -O3 -march=native -ffast-math -mfma. Nim and D do not have this problem.
 
-However, unlike Go, these two add so much accidental complexity... Just like Ada/Rust/C++...
+However, unlike Go, these two are also a mess, just like anything called "systems programming".
 
-C3, V, Odin are more promising as they are simpler, but they lack the coolness factor. gonz has been advocating Odin for a while, but he is now [back at C](https://www.youtube.com/watch?v=vBSn8T679XY&t=1508s). There are no answers, only choices.
+gonz has been advocating Odin for a while, but he went [back to C](https://www.youtube.com/watch?v=vBSn8T679XY&t=1508s). 
 
-I prefer Nim as it is the best looking C frontend, treat it this way. Nim becomes a mess when one digs too deep or tries to read someone else's code. It is like a fancy personal constructor. [The Nim forum](https://forum.nim-lang.org/t/8333) and [the docs](https://nim-lang.org/documentation.html) are very educational not just about Nim, but also about ambitious languages and their design. The same holds for [the D language forum](https://forum.dlang.org/thread/cowxgpjphtkzpgawnjae@forum.dlang.org?page=1). These are the best places to learn about programming, not books, not universities, not github.
+I have given Nim a try. See this code and my comments below. However, I am also on the C side now. C remains the only low level language which does not multiply entities without necessity. Yes, horrid with UB, no strings, no arrays, no modules etc. and etc., yet the core is struct + func + void* + preprocessor, the best one can do. Maximizes the spirit of hacking.
 
-If Go is MT07, Nim/D are like ZX-4RR/CBR600RR. C is Hayabusa...
+> A thousand people swear that T.P.
+
+> Seven is the one for me.
+
+> I hate the word PROCEDURE.
+
+> Write in C.
+
+I would add that [the Nim forum](https://forum.nim-lang.org/t/8333) and [the docs](https://nim-lang.org/documentation.html) are very educational, and the same holds for [the D language forum](https://forum.dlang.org/thread/cowxgpjphtkzpgawnjae@forum.dlang.org?page=1). Worth peeking into for structure and ideas, while staying in C.
 
 ## Dependencies and Compilation
 
