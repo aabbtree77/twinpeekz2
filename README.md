@@ -30,7 +30,7 @@ I have given Nim a try. See this code and my comments below. However, I am also 
 > Seven is the one for me.<br>
 > I hate the word PROCEDURE.<br>
 > Write in C.<br>
-<br>
+> <br>
 > [\- Dennis Ritchie - Write in C](https://www.youtube.com/watch?v=H4YRPdRXKFs)
 
 I would add that [the Nim forum](https://forum.nim-lang.org/t/8333) and [the docs](https://nim-lang.org/documentation.html) are very educational, and the same holds for [the D language forum](https://forum.dlang.org/thread/cowxgpjphtkzpgawnjae@forum.dlang.org?page=1). Worth peeking into for structure and ideas, while staying in C.
