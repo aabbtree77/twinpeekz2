@@ -16,24 +16,25 @@ This is a rewrite of [the Go code (2021)](https://github.com/aabbtree77/twinpeek
     </tr>
 </table>
 
-## Nim?! Write in C...
+## Why Nim?
 
-Go is [supersolid](https://github.com/aabbtree77/graceful), but when one rewrites C++ codes such as [smallpt](https://www.kevinbeason.com/smallpt/) in Go, they run 2-3x slower. The Go pipeline cannot end with gcc -O3 -march=native -ffast-math -mfma. Nim and D do not have this problem.
+Go is [supersolid](https://github.com/aabbtree77/graceful), but [smallpt](https://www.kevinbeason.com/smallpt/) will run 2-3x slower than it should in Go. Its pipeline does not end with gcc -O3 -march=native -ffast-math -mfma. Nim and D do not have this problem.
 
-However, unlike Go, these two are also a mess, just like anything called "systems programming".
+Why I prefer Nim:
 
-gonz has been advocating Odin for a while, but he went [back to C](https://www.youtube.com/watch?v=vBSn8T679XY&t=1508s). 
+- _const_, _let_, _var_, _object_ with value semantics, ARC/ORC,
 
-I have given Nim a try. See this code and my comments below. However, I am also on the C side now. C remains the only low level language which does not multiply entities without necessity. Yes, horrid with UB, no strings, no arrays, no modules etc. and etc., yet the core is struct + functions + void* + preprocessor, the best one can do.
+- _ref_, _ptr_ can be largely avoided,
 
-> A thousand people swear that T.P.<br>
-> Seven is the one for me.<br>
-> I hate the word PROCEDURE.<br>
-> Write in C.<br>
-> <br>
-> [\- Dennis Ritchie - Write in C](https://www.youtube.com/watch?v=H4YRPdRXKFs)
+- very gradual complexity, no need to know everything before coding anything, 
 
-I would add that [the Nim forum](https://forum.nim-lang.org/t/8333) and [the docs](https://nim-lang.org/documentation.html) are very educational, and the same holds for [the D language forum](https://forum.dlang.org/thread/cowxgpjphtkzpgawnjae@forum.dlang.org?page=1). Worth peeking into for structure and ideas, while staying in C.
+- three levels of understanding: [1](https://nim-lang.org/docs/tut1.html), [2](https://nim-lang.org/docs/tut2.html), and [3](https://nim-lang.org/docs/tut3.html),
+
+- community with a nag for hacking and 3D: [treeform](https://github.com/treeform?tab=repositories), [capocasa](https://github.com/capocasa?tab=repositories), [guzba](https://github.com/guzba?tab=repositories)...
+
+Dennis Felsing about Nim:
+
+_"I can produce reasonably efficient code (faster than Python and Haskell) that is reasonably readable (more so than Rust, C++ and Haskell) in a reasonable amount of time (less than Rust, C++ and Haskell)."
 
 ## Dependencies and Compilation
 
@@ -384,7 +385,11 @@ The third option is remarkably simple. Set mydata.f(...) instead of the usual f(
 
 * Minor edit (2025). Some food for thought:
 
-    ["Nim Nuggets: Systems Programming & Metaprogramming Magic" by Aditya Siram](https://www.youtube.com/watch?v=d2VRuZo2pdA&t=15s&ab_channel=StrangeLoopConference)
+    [What is special about Nim? by Dennis Felsing](https://hookrace.net/blog/what-is-special-about-nim/)
+    
+    [What is special about Nim? by Dennis Felsing on HN](https://news.ycombinator.com/item?id=8822816)
+
+    [Nim Nuggets: Systems Programming & Metaprogramming Magic by Aditya Siram](https://www.youtube.com/watch?v=d2VRuZo2pdA&t=15s&ab_channel=StrangeLoopConference)
     
     [Nim JSON parsing is 30 times slower than Node.JS by Alexey Petrushin](https://forum.nim-lang.org/t/8074)
     
@@ -401,6 +406,12 @@ The third option is remarkably simple. Set mydata.f(...) instead of the usual f(
     [Using C in 2026 is pretty good by Rickard Andersson](https://www.youtube.com/watch?v=vBSn8T679XY&t=1508s)
     
     [Why Go? #411](https://github.com/microsoft/typescript-go/discussions/411)
+    
+    [Nim vs D (Nim forum)](https://forum.nim-lang.org/t/1779)
+    
+    [D vs Nim (D forum)](https://forum.dlang.org/thread/mailman.1427.1428691340.3111.digitalmars-d@puremagic.com)
+    
+    [D vs Nim (timotheecour)](https://github.com/timotheecour/D_vs_nim/)
     
     [Dennis Ritchie - Write in C](https://www.youtube.com/watch?v=H4YRPdRXKFs)
     
