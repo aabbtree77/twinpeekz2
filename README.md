@@ -27,12 +27,11 @@ gonz has been advocating Odin for a while, but he went [back to C](https://www.y
 I have given Nim a try. See this code and my comments below. However, I am also on the C side now. C remains the only low level language which does not multiply entities without necessity. Yes, horrid with UB, no strings, no arrays, no modules etc. and etc., yet the core is struct + func + void* + preprocessor, the best one can do. Maximizes the spirit of hacking.
 
 > A thousand people swear that T.P.
-
 > Seven is the one for me.
-
 > I hate the word PROCEDURE.
-
 > Write in C.
+
+> /- [Dennis Ritchie - Write in C](https://www.youtube.com/watch?v=H4YRPdRXKFs)
 
 I would add that [the Nim forum](https://forum.nim-lang.org/t/8333) and [the docs](https://nim-lang.org/documentation.html) are very educational, and the same holds for [the D language forum](https://forum.dlang.org/thread/cowxgpjphtkzpgawnjae@forum.dlang.org?page=1). Worth peeking into for structure and ideas, while staying in C.
 
@@ -402,4 +401,6 @@ The third option is remarkably simple. Set mydata.f(...) instead of the usual f(
     [Using C in 2026 is pretty good by Rickard Andersson](https://www.youtube.com/watch?v=vBSn8T679XY&t=1508s)
     
     [Why Go? #411](https://github.com/microsoft/typescript-go/discussions/411)
+    
+    [Dennis Ritchie - Write in C](https://www.youtube.com/watch?v=H4YRPdRXKFs)
     
