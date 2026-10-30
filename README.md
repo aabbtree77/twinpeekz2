@@ -24,7 +24,7 @@ However, unlike Go, these two are also a mess, just like anything called "system
 
 gonz has been advocating Odin for a while, but he went [back to C](https://www.youtube.com/watch?v=vBSn8T679XY&t=1508s). 
 
-I have given Nim a try. See this code and my comments below. However, I am also on the C side now. C remains the only low level language which does not multiply entities without necessity. Yes, horrid with UB, no strings, no arrays, no modules etc. and etc., yet the core is struct + func + void* + preprocessor, the best one can do. Maximizes the spirit of hacking.
+I have given Nim a try. See this code and my comments below. However, I am also on the C side now. C remains the only low level language which does not multiply entities without necessity. Yes, horrid with UB, no strings, no arrays, no modules etc. and etc., yet the core is struct + functions + void* + preprocessor, the best one can do.
 
 > A thousand people swear that T.P.<br>
 > Seven is the one for me.<br>
