@@ -18,23 +18,7 @@ This is a rewrite of [the Go code (2021)](https://github.com/aabbtree77/twinpeek
 
 ## Why Nim?
 
-Go is [supersolid](https://github.com/aabbtree77/graceful), but [smallpt](https://www.kevinbeason.com/smallpt/) will run 2-3x slower than it should in Go. Its pipeline does not end with gcc -O3 -march=native -ffast-math -mfma. Nim and D do not have this problem.
-
-Why I prefer Nim:
-
-- _const_, _let_, _var_, _object_ with value semantics, ARC/ORC,
-
-- _ref_, _ptr_ can be largely avoided,
-
-- very gradual complexity, no need to know everything before coding anything, 
-
-- three levels of understanding: [1](https://nim-lang.org/docs/tut1.html), [2](https://nim-lang.org/docs/tut2.html), and [3](https://nim-lang.org/docs/tut3.html),
-
-- community with a nag for hacking and 3D: [treeform](https://github.com/treeform?tab=repositories), [capocasa](https://github.com/capocasa?tab=repositories), [guzba](https://github.com/guzba?tab=repositories)...
-
-Dennis Felsing about Nim:
-
-_"I can produce reasonably efficient code (faster than Python and Haskell) that is reasonably readable (more so than Rust, C++ and Haskell) in a reasonable amount of time (less than Rust, C++ and Haskell)."
+Go is [solid](https://github.com/aabbtree77/graceful), but [smallpt](https://www.kevinbeason.com/smallpt/) will run 2-3x slower than it should in Go. Its pipeline does not end with gcc -O3 -march=native -ffast-math -mfma. Nim and D do not have this problem.
 
 ## Dependencies and Compilation
 
@@ -383,7 +367,9 @@ The third option is remarkably simple. Set mydata.f(...) instead of the usual f(
   <img src="https://raw.githubusercontent.com/aabbtree77/twinpeekz2/main/nim-nimlang.gif" alt="nimlang-love">
 </div>
 
-* Minor edit (2025). Some food for thought:
+* Some interesting Nimers: [treeform](https://github.com/treeform?tab=repositories), [capocasa](https://github.com/capocasa?tab=repositories), [guzba](https://github.com/guzba?tab=repositories), [dom96](https://github.com/dom96?tab=repositories)...
+
+* Some food for thought:
 
     [What is special about Nim? by Dennis Felsing](https://hookrace.net/blog/what-is-special-about-nim/)
     
