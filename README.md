@@ -16,9 +16,19 @@ This is a rewrite of [the Go code (2021)](https://github.com/aabbtree77/twinpeek
     </tr>
 </table>
 
-## Why Nim?
+## Nim?
 
-Go is [solid](https://github.com/aabbtree77/graceful), but [smallpt](https://www.kevinbeason.com/smallpt/) will run 2-3x slower than it should in Go. Its pipeline does not end with gcc -O3 -march=native -ffast-math -mfma. Nim and D do not have this problem.
+Go is [solid](https://github.com/aabbtree77/graceful), but will run 2-3x slower than it should. Its pipeline does not end with `gcc -O3 -march=native -ffast-math -mfma`. Nim and D do not have this problem.
+
+The downside is that they come with non-debuggable mess:
+
+- still fairly manual memory and thread management,
+
+- compile time metaprogramming abuse,
+
+- annotations, compiler flags, experiments.
+
+Ultimately, this is not any easier than C/C++. "Better C" is an oxymoron.
 
 ## Dependencies and Compilation
 
@@ -367,7 +377,7 @@ The third option is remarkably simple. Set mydata.f(...) instead of the usual f(
   <img src="https://raw.githubusercontent.com/aabbtree77/twinpeekz2/main/nim-nimlang.gif" alt="nimlang-love">
 </div>
 
-* Some interesting Nimers: [treeform](https://github.com/treeform?tab=repositories), [capocasa](https://github.com/capocasa?tab=repositories), [guzba](https://github.com/guzba?tab=repositories), [dom96](https://github.com/dom96?tab=repositories)...
+* Code for servers and 3D: [treeform](https://github.com/treeform?tab=repositories), [capocasa](https://github.com/capocasa?tab=repositories), [guzba](https://github.com/guzba?tab=repositories), [dom96](https://github.com/dom96?tab=repositories), [Niminem](https://github.com/Niminem?tab=repositories)...
 
 * Some food for thought:
 
