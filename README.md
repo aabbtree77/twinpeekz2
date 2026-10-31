@@ -372,8 +372,6 @@ The third option is remarkably simple. Set mydata.f(...) instead of the usual f(
 * Some food for thought:
 
     [What is special about Nim? by Dennis Felsing](https://hookrace.net/blog/what-is-special-about-nim/)
-    
-    [What is special about Nim? by Dennis Felsing on HN](https://news.ycombinator.com/item?id=8822816)
 
     [Nim Nuggets: Systems Programming & Metaprogramming Magic by Aditya Siram](https://www.youtube.com/watch?v=d2VRuZo2pdA&t=15s&ab_channel=StrangeLoopConference)
     
