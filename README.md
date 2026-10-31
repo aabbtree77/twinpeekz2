@@ -18,17 +18,11 @@ This is a rewrite of [the Go code (2021)](https://github.com/aabbtree77/twinpeek
 
 ## Nim?
 
-Go is [solid](https://github.com/aabbtree77/graceful), but will run 2-3x slower than it should. Its pipeline does not end with `gcc -O3 -march=native -ffast-math -mfma`. Nim and D do not have this problem.
+Go is [solid](https://github.com/aabbtree77/graceful), but may run 2-3x slower than it should. Its pipeline does not end with `gcc -O3 -march=native -ffast-math -mfma`. Nim and D do not have this problem.
 
-The downside is that they come with non-debuggable mess:
+Beware that Nim looks extremely succinct and clear on [Rosetta Code](https://rosettacode.org/wiki/Tree_traversal#Nim), but not so in larger code bases, e.g. [cligen](https://github.com/c-blake/cligen/blob/master/cligen.nim#L1289) or [the Nim compiler AST](https://github.com/nim-lang/Nim/blob/devel/compiler/ast.nim).
 
-- still fairly manual memory and thread management,
-
-- compile time metaprogramming abuse,
-
-- annotations, compiler flags, experiments.
-
-Ultimately, this is not any easier than C/C++. "Better C" is an oxymoron.
+Ultimately, Nim/D are not easier than Rust/C++ and could be worse than C. I am willing to take that 2-3x slow down in Go.
 
 ## Dependencies and Compilation
 
