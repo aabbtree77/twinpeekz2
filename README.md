@@ -18,7 +18,53 @@ This is a rewrite of [the Go code (2021)](https://github.com/aabbtree77/twinpeek
 
 ## Nim?
 
-Go is [solid](https://github.com/aabbtree77/graceful), but may run 2x slower than it should. Its pipeline does not end with `gcc -O3 -march=native -ffast-math -mfma`. Nim and D do not have this problem.
+Go is suboptimal in number crunching as its compiler pipeline does not end with `gcc -O3 -march=native -ffast-math -mfma`. The codes such as [smallpt](https://www.kevinbeason.com/smallpt/) run 2-3x slower in Go than in C/C++ (assume no user acrobatics in either case).
+
+Nim and D do not have this problem. One can write regular code without too much fluff and still get the baseline C/C++ performance (dynamic arrays, stdlib vs STL, no acrobatics championships). 
+
+In addition, Nim and D are also extremely succinct, esp. due to:
+
+- opt out ARC/GC,
+
+- exceptions,
+
+- UFCS.
+
+Let us ignore compile time facilities which can be a boon or PITA.
+
+This is the major motivation for Nim or D. Both are almost identical in how they operate and evolve:
+
+- tiny communities centered around O(10) power users,
+
+- very innovative and messy design (multi-paradigm, feature creep).
+
+Neither matches Go in concurrency and parallelism, see my investigation [here](https://github.com/aabbtree77/graceful).
+
+Ultimately, I am leaning towards C for low level/3D, and Go for the rest, but Nim and D are, shall we say, interesting. Very educational forums, lots of creativity, but I am not sure they nailed it, universalism.
+
+ARC and succinctness are attractive, but:
+
+- distributed systems will be much easier and more reliable in Go,
+
+- at low level the shit hits the fan pretty rapidly, better have less degrees of freedom ;),  
+
+- CTFE, macros, move semantics... I will take C.
+
+Still, there is never an answer, and this is why I have tried Nim. 
+
+Confused even more now, leaning towards Go frankly. Two arguments:
+
+- original MineCraft was Java,
+
+- "make it work, make it right, make it fast".
+
+The D motto is actually ["Fast code, fast."](https://dlang.org/) 
+
+But it really feels more about "right and fast". 
+
+Problem is, we have no shortage of the right ones. No shortage of the fast ones either. 
+
+It's those around "make it work" that matter, so here is your answer. 
 
 ## Dependencies and Compilation
 
