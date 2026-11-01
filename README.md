@@ -18,53 +18,25 @@ This is a rewrite of [the Go code (2021)](https://github.com/aabbtree77/twinpeek
 
 ## Nim?
 
-Go is suboptimal in number crunching as its compiler pipeline does not end with `gcc -O3 -march=native -ffast-math -mfma`. The codes such as [smallpt](https://www.kevinbeason.com/smallpt/) run 2-3x slower in Go than in C/C++ (assume no user acrobatics in either case).
+The idea behind Nim (and also D) is that one writes regular code like in any GC language. 
+When the need for extreme performance arises, one can manage memory manually, move stuff 
+to compile time. The Nim and D compilers also do auto-vectorization with SIMD registers.
 
-Nim and D do not have this problem. One can write regular code without too much fluff and still get the baseline C/C++ performance (dynamic arrays, stdlib vs STL, no acrobatics championships). 
+The two are also extremely succinct due to exceptions and UFCS.
 
-In addition, Nim and D are also extremely succinct, esp. due to:
+Sadly, neither Nim nor D matches Go in concurrency, see my investigation [here](https://github.com/aabbtree77/graceful). 
 
-- opt out ARC/GC,
+They are also extremely complex languages with compile time code generation. One can pull external files and run scripts at compile time. There are a lot of annotations, experimental features. 
 
-- exceptions,
+Above all, [Nim 3](https://medium.com/@s.quddin/nim-3-0-a-deep-dive-into-the-next-generation-of-nim-6cd2c92cba5c) is a new language yet again, with "compiler plugins" and new built in concurrency. ref T and ptr T are non-nil by default, new object variants (sum types)...
 
-- UFCS.
+Nim and D are, shall we say, interesting. I think they mostly work as personal constructors, when one writes everything alone, and mostly from scratch.
 
-Let us ignore compile time facilities which can be a boon or PITA.
+Ultimately, I am leaning towards Go. Two arguments:
 
-This is the major motivation for Nim or D. Both are almost identical in how they operate and evolve:
-
-- tiny communities centered around O(10) power users,
-
-- very innovative and messy design (multi-paradigm, feature creep).
-
-Neither matches Go in concurrency and parallelism, see my investigation [here](https://github.com/aabbtree77/graceful).
-
-Ultimately, I am leaning towards C for low level/3D, and Go for the rest, but Nim and D are, shall we say, interesting. Very educational forums, lots of creativity, but I am not sure they nailed it, universalism.
-
-ARC and succinctness are attractive, but:
-
-- distributed systems will be much easier and more reliable in Go,
-
-- at low level the shit hits the fan pretty rapidly, better have less degrees of freedom ;),  
-
-- CTFE, macros, move semantics... I will take C.
-
-Still, there is never an answer, and this is why I have tried Nim. 
-
-Confused even more now, leaning towards Go frankly. Two arguments:
-
-- original MineCraft was Java,
+- original MineCraft is Java,
 
 - "make it work, make it right, make it fast".
-
-The D motto is actually ["Fast code, fast."](https://dlang.org/) 
-
-But it really feels more about "right and fast". 
-
-Problem is, we have no shortage of the right ones. No shortage of the fast ones either. 
-
-It's those around "make it work" that matter, so here is your answer. 
 
 ## Dependencies and Compilation
 
