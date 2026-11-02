@@ -387,6 +387,8 @@ The third option is remarkably simple. Set mydata.f(...) instead of the usual f(
     
     [Nim 2.0: "Dynamic data structures are pointers on the stack to heap data, where the lifetime is managed by the stack frame."](https://news.ycombinator.com/item?id=36955806)
     
+    [Andreas Rumpf: NIF, Nimony, Nim 3 (NimConf 2026)](https://youtu.be/ZYIW8YgH49w?t=512)
+    
     [Nim vs D (Nim forum)](https://forum.nim-lang.org/t/1779)
     
     [D vs Nim (D forum)](https://forum.dlang.org/thread/mailman.1427.1428691340.3111.digitalmars-d@puremagic.com)
