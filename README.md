@@ -16,31 +16,13 @@ This is a rewrite of [the Go code (2021)](https://github.com/aabbtree77/twinpeek
     </tr>
 </table>
 
-## Nim?
+## Nim?!
 
-The idea behind Nim (and also D) is that one writes regular code like in any GC language. 
-When the need for extreme performance arises, one can manage memory manually, move stuff 
-to compile time. The Nim and D compilers also do auto-vectorization with SIMD registers.
+Nim and D are about power. They are designed for you to build custom containers parameterized by allocator type, which can also mix built-in dynamic and associative arrays with references, perform compile time checking, convenient indexing, enforce copying and instancing restrictions, CPU and GPU synchronization, deferred destruction... Think object management, node systems, Unreal.
 
-The two are also extremely succinct due to exceptions and UFCS.
+**You are not forced to choose between an entirely managed engine and an entirely unmanaged one.**
 
-Sadly, neither Nim nor D matches Go in concurrency, see my investigation [here](https://github.com/aabbtree77/graceful). 
-
-They are also extremely complex languages with compile time code generation. One can pull external files and run scripts at compile time. A lot of annotations, experimental features, forum discussions, bug reports. Think C++, Haskell level of complexity. Moving, borrowing, zero cost abstractions. 
-
-[Walter Bright](https://forum.dlang.org/post/urp0t0$h9f$1@digitalmars.com):
-
-_D already does some things so much better than C++ by thinking "dammit there's got to be a better way than this mess!" Things like no ADL, decent modules, simple template syntax, easy to understand overloading, context-free grammar, slices, etc.."_
-
-In 2026, D is still polishing move semantics. [Nim 3](https://medium.com/@s.quddin/nim-3-0-a-deep-dive-into-the-next-generation-of-nim-6cd2c92cba5c) emerges as a new language yet again, with "compiler plugins" and new built in concurrency. ref T and ptr T are non-nil by default, new object variants (sum types)...
-
-Nim and D are, shall we say, interesting. I think they mostly work as personal constructors, when one writes everything alone, and mostly from scratch.
-
-Ultimately, I am leaning towards Go. Two arguments:
-
-- original MineCraft is Java,
-
-- "make it work, make it right, make it fast".
+I am a simple man, just looking for a modern language to bring more succinctness and faster number crunching than Go. Subjectively, I prefer Nim. This code is Nim 2, but the newest Nim 3 finally imposes default not nil on ref and ptr types, finally introduces new object variants that cover F#/Rust sum types, finally brings concurrency to the language level!
 
 ## Dependencies and Compilation
 
