@@ -26,9 +26,13 @@ The two are also extremely succinct due to exceptions and UFCS.
 
 Sadly, neither Nim nor D matches Go in concurrency, see my investigation [here](https://github.com/aabbtree77/graceful). 
 
-They are also extremely complex languages with compile time code generation. One can pull external files and run scripts at compile time. There are a lot of annotations, experimental features. 
+They are also extremely complex languages with compile time code generation. One can pull external files and run scripts at compile time. A lot of annotations, experimental features, forum discussions, bug reports. Think C++, Haskell level of complexity. Moving, borrowing, zero cost abstractions. 
 
-Above all, [Nim 3](https://medium.com/@s.quddin/nim-3-0-a-deep-dive-into-the-next-generation-of-nim-6cd2c92cba5c) is a new language yet again, with "compiler plugins" and new built in concurrency. ref T and ptr T are non-nil by default, new object variants (sum types)...
+[Walter Bright](https://forum.dlang.org/post/urp0t0$h9f$1@digitalmars.com):
+
+_D already does some things so much better than C++ by thinking "dammit there's got to be a better way than this mess!" Things like no ADL, decent modules, simple template syntax, easy to understand overloading, context-free grammar, slices, etc.."_
+
+In 2026, D is still polishing move semantics. [Nim 3](https://medium.com/@s.quddin/nim-3-0-a-deep-dive-into-the-next-generation-of-nim-6cd2c92cba5c) emerges as a new language yet again, with "compiler plugins" and new built in concurrency. ref T and ptr T are non-nil by default, new object variants (sum types)...
 
 Nim and D are, shall we say, interesting. I think they mostly work as personal constructors, when one writes everything alone, and mostly from scratch.
 
@@ -401,19 +405,21 @@ The third option is remarkably simple. Set mydata.f(...) instead of the usual f(
     
     [Nim 2.0: "Dynamic data structures are pointers on the stack to heap data, where the lifetime is managed by the stack frame."](https://news.ycombinator.com/item?id=36955806)
     
-    [Why Zig over Rust? by Richard Feldman](https://gist.github.com/rtfeldman/77fb430ee57b42f5f2ca973a3992532f)
-    
-    [Languages I considered using before Odin by Rickard Andersson](https://www.youtube.com/watch?v=vFFcCLzOOyw&t=3333s&ab_channel=RickardAndersson%28gonz%29)
-    
-    [Using C in 2026 is pretty good by Rickard Andersson](https://www.youtube.com/watch?v=vBSn8T679XY&t=1508s)
-    
-    [Why Go? #411](https://github.com/microsoft/typescript-go/discussions/411)
-    
     [Nim vs D (Nim forum)](https://forum.nim-lang.org/t/1779)
     
     [D vs Nim (D forum)](https://forum.dlang.org/thread/mailman.1427.1428691340.3111.digitalmars-d@puremagic.com)
     
     [D vs Nim (timotheecour)](https://github.com/timotheecour/D_vs_nim/)
     
+    [What ever happened to move semantics?](https://forum.dlang.org/thread/mailman.994.1709000944.3719.digitalmars-d@puremagic.com?page=1)
+    
+    [Why Zig over Rust? by Richard Feldman](https://gist.github.com/rtfeldman/77fb430ee57b42f5f2ca973a3992532f)
+    
+    [Languages I considered using before Odin by Rickard Andersson](https://www.youtube.com/watch?v=vFFcCLzOOyw&t=3333s&ab_channel=RickardAndersson%28gonz%29)
+    
+    [Using C in 2026 is pretty good by Rickard Andersson](https://www.youtube.com/watch?v=vBSn8T679XY&t=1508s)
+    
     [Dennis Ritchie - Write in C](https://www.youtube.com/watch?v=H4YRPdRXKFs)
+    
+    [Why Go? #411](https://github.com/microsoft/typescript-go/discussions/411)
     
