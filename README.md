@@ -44,11 +44,11 @@ Plus two more:
 
 - AI will write Nim 2 instead of Nim 3.
 
-Ultimately, a clean up with the Boost C++ vibes :(.
-
 Go is weaker in power, but notice it has none of these 4-6 problems which are always there with these big guns.
 
-The original MineCraft is Java, think about it. No containers with custom allocators. No RAII and move semantics. No "execute your normal code at compile time". No Jai and friction reduction, and no Unity/UE either. Just a simple joy of design and coding.
+The original MineCraft is Java... No containers with custom allocators. No RAII and move semantics. No "execute your normal code at compile time". No Jai and friction reduction, and no Unity/UE either. No C, D, D with -betterC... D is very similar to Nim.
+
+However, [Unreal Engine Blueprints](https://www.youtube.com/watch?v=kaUupZTEZII&t=2599s) is something to think about. 
 
 ## Dependencies and Compilation
 
