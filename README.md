@@ -16,39 +16,23 @@ This is a rewrite of [the Go code (2021)](https://github.com/aabbtree77/twinpeek
     </tr>
 </table>
 
-## Nim?!
+## 2026 Update
 
-In theory, Nim is a more succinct/pragmatic Rust:
+Nim and D are the most innovative projects in the "better C/C++" category.
 
-- default not nil and new sum types (Nim 3), 
+Nim 3 is now a more pragmatic and succinct Rust effectively, with default not nil and new sum types.
 
-- const, let, var,
+Is this relevant in the age of AI though?
 
-- ARC/ORC with opt in for all that C++ stuff,
+AI will write Nim 2 instead of Nim 3. Nim is also tiny github-wise.
 
-- exceptions and UFCS...
+Rust is clearly winning this space, and one can now find more recent and feature-complete volumetric light rendering demos with Vulkan instead of OpenGL, or even WebGPU, see e.g. [RustBakedVoxelLighting](https://github.com/SamG-Coder/RustBakedVoxelLighting). 
 
-However, the same problems:
+There is also never a shortage of C++ codes in 3D, see my previous Go repository for the links, but also a few newer ones: [Luz](https://github.com/hadryansalles/Luz) and [PlainRenderer](https://github.com/Gaukler/PlainRenderer/tree/master). These two are Frostbite style 2015-based with froxels, not KillZone 2014-inspired as the code here.
 
-- clever people,
+[Unreal Engine Blueprints](https://www.youtube.com/watch?v=kaUupZTEZII&t=2599s) are also something to think about. One can do everything in them, and they raise abstraction level, not to mention vast expansion in functionality over a tiny custom demo/mini-engine.  
 
-- concurrency,
-
-- debugging,
-
-- compilation time...
-
-Plus two more:
-
-- tiny user base,
-
-- AI will write Nim 2 instead of Nim 3.
-
-Go is weaker in power, but notice it has none of these 4-6 problems which are always there with these big guns.
-
-The original MineCraft is Java... No containers with custom allocators. No RAII and move semantics. No "execute your normal code at compile time". No Jai and friction reduction, and no Unity/UE either. No C, D, D with -betterC... D is very similar to Nim.
-
-However, [Unreal Engine Blueprints](https://www.youtube.com/watch?v=kaUupZTEZII&t=2599s) is something to think about. 
+On the other hand, an AI is better with C/C++/Rust than with a humongous GUI editor and its version changes. In a way, these custom codes begin to make more sense now than five years ago.
 
 ## Dependencies and Compilation
 
