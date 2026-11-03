@@ -18,35 +18,29 @@ This is a rewrite of [the Go code (2021)](https://github.com/aabbtree77/twinpeek
 
 ## Nim?!
 
-The good:
+Vastly better core than Go which is also more pragmatic than in Rust, esp. with Nim 3:
 
-- exceptions and UFCS,
-
-- default not nil for ref and ptr (Nim 3),
-
-- sum types (Nim 3), 
+- default not nil and new sum types (Nim 3), 
 
 - const, let, var,
 
-- opt in for manual alloc/free.
+- ARC/ORC with opt in manual alloc/free,
+
+- exceptions and UFCS.
 
 Potential problems:
 
 - compilation time, 
 
-- macros,
-
-- other people,
+- clever people with macros and operator overloading,
 
 - concurrency,
 
-- debugging.
+- debugging,
 
-Go is less trouble. Two further arguments in Go's favour:
+- AI will write Nim 2 instead of Nim 3.
 
-- original MineCraft is Java,
-
-- "make it work, make it right, make it fast".
+Still not sure if Nim and D are worthy. Power attracts wrong people. Ada/Rust, C++, Haskell types.
 
 ## Dependencies and Compilation
 
