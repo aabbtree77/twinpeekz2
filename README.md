@@ -18,11 +18,35 @@ This is a rewrite of [the Go code (2021)](https://github.com/aabbtree77/twinpeek
 
 ## Nim?!
 
-Nim and D are about power. They are designed for you to build custom containers parameterized by allocator type, which can also mix built-in dynamic and associative arrays with references, perform compile time checking, convenient indexing, enforce copying and instancing restrictions, CPU and GPU synchronization, deferred destruction... Think object management, node systems, Unreal.
+The good:
 
-**You are not forced to choose between an entirely managed engine and an entirely unmanaged one.**
+- exceptions and UFCS,
 
-I am a simple man, just looking for a modern language to bring more succinctness and faster number crunching than Go. Subjectively, I prefer Nim. This code is Nim 2, but the newest Nim 3 finally imposes default not nil on ref and ptr types, finally introduces new object variants that cover F#/Rust sum types, finally brings concurrency to the language level!
+- default not nil for ref and ptr (Nim 3),
+
+- sum types (Nim 3), 
+
+- const, let, var,
+
+- opt in for manual alloc/free.
+
+Potential problems:
+
+- compilation time, 
+
+- macros,
+
+- other people,
+
+- concurrency,
+
+- debugging.
+
+Go is less trouble. Two further arguments in Go's favour:
+
+- original MineCraft is Java,
+
+- "make it work, make it right, make it fast".
 
 ## Dependencies and Compilation
 
@@ -386,6 +410,8 @@ The third option is remarkably simple. Set mydata.f(...) instead of the usual f(
     [Nim Destructors](https://nim-lang.org/docs/destructors.html)
     
     [Nim 2.0: "Dynamic data structures are pointers on the stack to heap data, where the lifetime is managed by the stack frame."](https://news.ycombinator.com/item?id=36955806)
+    
+    [The turbulent evolution of Nim's concurrency story (As of August 2025)](https://forum.nim-lang.org/t/13322)
     
     [Andreas Rumpf: NIF, Nimony, Nim 3 (NimConf 2026)](https://youtu.be/ZYIW8YgH49w?t=512)
     
