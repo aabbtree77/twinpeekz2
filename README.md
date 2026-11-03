@@ -18,29 +18,37 @@ This is a rewrite of [the Go code (2021)](https://github.com/aabbtree77/twinpeek
 
 ## Nim?!
 
-Vastly better core than Go which is also more pragmatic than in Rust, esp. with Nim 3:
+In theory, Nim is a more succinct/pragmatic Rust:
 
 - default not nil and new sum types (Nim 3), 
 
 - const, let, var,
 
-- ARC/ORC with opt in manual alloc/free,
+- ARC/ORC with opt in for all that C++ stuff,
 
-- exceptions and UFCS.
+- exceptions and UFCS...
 
-Potential problems:
+However, the same problems:
 
-- compilation time, 
-
-- clever people with macros and operator overloading,
+- clever people,
 
 - concurrency,
 
 - debugging,
 
+- compilation time...
+
+Plus two more:
+
+- tiny user base,
+
 - AI will write Nim 2 instead of Nim 3.
 
-Still not sure if Nim and D are worthy. Power attracts wrong people. Ada/Rust, C++, Haskell types.
+Ultimately, a clean up with the Boost C++ vibes :(.
+
+Go is weaker in power, but notice it has none of these 4-6 problems which are always there with these big guns.
+
+The original MineCraft is Java, think about it. No containers with custom allocators. No RAII and move semantics. No "execute your normal code at compile time". No Jai and friction reduction, and no Unity/UE either. Just a simple joy of design and coding.
 
 ## Dependencies and Compilation
 
@@ -383,13 +391,9 @@ The third option is remarkably simple. Set mydata.f(...) instead of the usual f(
   | Markdown | 1     | 95    | 0       | 235  |
   | SUM:     | 16    | 670   | 246     | 1864 |
 
-* Programming desktop 3D revolves around some big libs which become rather language-agnostic: GLFW/SDL, GLTF/Assimp, MGL vector math, stb_image, ImGui, OpenGL...
+* Programming desktop 3D revolves around GLFW/SDL, GLTF/Assimp, MGL vector math, stb_image, ImGui... The elephant in the room is OpenGL/Vulkan/WebGPU, not containers with custom allocators.
 
-<div align="center">
-  <img src="https://raw.githubusercontent.com/aabbtree77/twinpeekz2/main/nim-nimlang.gif" alt="nimlang-love">
-</div>
-
-* Code for servers and 3D: [treeform](https://github.com/treeform?tab=repositories), [capocasa](https://github.com/capocasa?tab=repositories), [guzba](https://github.com/guzba?tab=repositories), [dom96](https://github.com/dom96?tab=repositories), [Niminem](https://github.com/Niminem?tab=repositories)...
+* Some power users: [treeform](https://github.com/treeform?tab=repositories), [capocasa](https://github.com/capocasa?tab=repositories), [guzba](https://github.com/guzba?tab=repositories), [dom96](https://github.com/dom96?tab=repositories), [Niminem](https://github.com/Niminem?tab=repositories)...
 
 * Some food for thought:
 
