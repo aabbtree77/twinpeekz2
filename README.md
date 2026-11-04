@@ -30,9 +30,11 @@ Rust is clearly winning this space, and one can now find more recent and feature
 
 There is also never a shortage of C++ codes in 3D, see my previous Go repository for the links, but also a few newer ones: [Luz](https://github.com/hadryansalles/Luz) and [PlainRenderer](https://github.com/Gaukler/PlainRenderer/tree/master). These two are Frostbite style 2015-based with froxels, not KillZone 2014-inspired as the code here.
 
-[Unreal Engine Blueprints](https://www.youtube.com/watch?v=kaUupZTEZII&t=2599s) are also something to think about. One can do everything in them, and they raise abstraction level, not to mention vast expansion in functionality over a tiny custom demo/mini-engine.  
+[Unreal Engine Blueprints](https://www.youtube.com/watch?v=kaUupZTEZII&t=2599s) are also to consider. One can do everything in them, and they raise abstraction level, not to mention vast expansion in functionality over a tiny custom demo/mini-engine.  
 
-On the other hand, an AI is better with C/C++/Rust than with a humongous GUI editor and its version changes. In a way, these custom codes begin to make more sense now than five years ago.
+The only problem with UE is that "Epic recommends 32 GB RAM and 8 GB VRAM for Linux development. Lumen on NVIDIA requires RTX 2000-series or newer hardware." NVIDIA driver 570 or newer is required, while my GTX760 is 470.
+
+ChatGPT mentions RTX 3060 12GB and 32GB RAM as "just a sensible entry point, not a luxury workstation".
 
 ## Dependencies and Compilation
 
