@@ -30,11 +30,19 @@ Rust is clearly winning this space, and one can now find more recent and feature
 
 There is also never a shortage of C++ codes in 3D, see my previous Go repository for the links, but also a few newer ones: [Luz](https://github.com/hadryansalles/Luz) and [PlainRenderer](https://github.com/Gaukler/PlainRenderer/tree/master). These two are Frostbite style 2015-based with froxels, not KillZone 2014-inspired as the code here.
 
-[Unreal Engine Blueprints](https://www.youtube.com/watch?v=kaUupZTEZII&t=2599s) are also to consider. One can do everything in them, and they raise abstraction level, not to mention vast expansion in functionality over a tiny custom demo/mini-engine.  
+What is the point of all this?
 
-The only problem with UE is that "Epic recommends 32 GB RAM and 8 GB VRAM for Linux development. Lumen on NVIDIA requires RTX 2000-series or newer hardware." NVIDIA driver 570 or newer is required, while my GTX760 is 470.
+Consider [Unreal Engine Blueprints](https://www.youtube.com/watch?v=kaUupZTEZII&t=2599s). Very powerful, and yet:
 
-ChatGPT mentions RTX 3060 12GB and 32GB RAM as "just a sensible entry point, not a luxury workstation".
+- RTX 3060 12GB and 32GB RAM as "a sensible entry point" and this gets only worse every 5-10 years, e.g. I can no longer use my GTX760 from 2016 just to install UE without acrobatics.
+
+- Blueprints do not raise the abstraction level. This is a visual scripting layer atop C++, cluttering "if condition" with a big game object, they are both just nodes in UE. One can still do everything this way, but it quickly becomes a caboodle. This needs a better design upfront ala Smalltalk and Erlang, but the problem is more tricky than it seems since not everything should be an actor/object. This needs the right level of granularity for performance and abstraction.
+
+So I would not rule out entirely Nim/D and all these custom engines and demos. 
+
+We also have to separate the current money world from a better reality we want to build. Are we a civilization or a commercial project? The money world always ends up with nodes concentrating power: UE, Postgres, Kafka, Akka, Vercel, AI... This is function and performance, but also fiscal quarter myopia and treadmill activity. A better reality is more decentralized, cutting off power concentrating loops and nodes, Smalltalk-ish and Erlang-ish, but not necessarily those architectures in these languages. Could be Nim, D, Go...
+
+Let us keep moving there.
 
 ## Dependencies and Compilation
 
