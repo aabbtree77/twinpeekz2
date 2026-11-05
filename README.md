@@ -32,15 +32,21 @@ There is also never a shortage of C++ codes in 3D, see my previous Go repository
 
 What is the point of all this?
 
-Consider [Unreal Engine Blueprints](https://www.youtube.com/watch?v=kaUupZTEZII&t=2599s). Very powerful, and yet:
+Consider [Unreal Engine](https://www.youtube.com/watch?v=kaUupZTEZII&t=2599s). Very powerful, and yet:
 
-- RTX 3060 12GB and 32GB RAM as "a sensible entry point" and this gets only worse every 5-10 years, e.g. I can no longer use my GTX760 from 2016 just to install UE without acrobatics.
+- RTX 3060 12GB and 32GB RAM as "a sensible entry point". UE5 won't run on my GTX760, UE6 will only be worse.
 
-- Blueprints do not raise the abstraction level. This is a visual scripting layer atop C++, cluttering "if condition" with a big game object, they are both just nodes in UE. One can still do everything this way, but it quickly becomes a caboodle. This needs a better design upfront ala Smalltalk and Erlang, but the problem is more tricky than it seems since not everything should be an actor/object. This needs the right level of granularity for performance and abstraction.
+- Blueprints do not raise the abstraction level. An if condition and a big game object are nodes in UE.
 
-So I would not rule out entirely Nim/D and all these custom engines and demos. 
+- [UE6](https://www.youtube.com/watch?v=i0wZCIhqveQ) is a new mess with Verse and AI.
 
-We also have to separate the current money world from a better reality we want to build. Are we a civilization or a commercial project? The money world always ends up with nodes concentrating power: UE, Postgres, Kafka, Akka, Vercel, AI... This is function and performance, but also fiscal quarter myopia and treadmill activity. A better reality is more decentralized, cutting off power concentrating loops and nodes, Smalltalk-ish and Erlang-ish, but not necessarily those architectures in these languages. Could be Nim, D, Go...
+I would not rule out coding, Nim/D. 
+
+We also have to separate the current money world from a better reality we want to build. 
+
+Are we a civilization or a commercial project? 
+
+The money world always ends up with nodes concentrating power: UE, Postgres, Kafka, Akka, Vercel, AI... This is function and performance, but also fiscal quarter myopia and treadmill activities. A better reality is more decentralized, cutting off power concentrating loops and nodes, Smalltalk-ish and Erlang-ish, but not necessarily those architectures in these languages. Could be Nim, D, Go...
 
 Let us keep moving there.
 
@@ -424,6 +430,4 @@ The third option is remarkably simple. Set mydata.f(...) instead of the usual f(
     [Dennis Ritchie - Write in C](https://www.youtube.com/watch?v=H4YRPdRXKFs)
     
     [Why Go? #411](https://github.com/microsoft/typescript-go/discussions/411)
-    
-    [Unreal Engine Blueprints](https://www.youtube.com/watch?v=kaUupZTEZII&t=2599s)
     
