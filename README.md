@@ -22,7 +22,7 @@ Nim 3 is now a more pragmatic Rust, with default not nil and new sum types.
 
 Is this relevant in the age of AI though?
 
-[RustBakedVoxelLighting](https://github.com/SamG-Coder/RustBakedVoxelLighting), [Luz](https://github.com/hadryansalles/Luz), [PlainRenderer?](https://github.com/Gaukler/PlainRenderer/tree/master). The latter two are Frostbite style 2015-based with froxels, not KillZone 2014-inspired as the code here.
+[RustBakedVoxelLighting](https://github.com/SamG-Coder/RustBakedVoxelLighting), [Luz](https://github.com/hadryansalles/Luz), [PlainRenderer?](https://github.com/Gaukler/PlainRenderer/tree/master) The latter two are Frostbite style with froxels, not KillZone style as the code here.
 
 ## Dependencies and Compilation
 
