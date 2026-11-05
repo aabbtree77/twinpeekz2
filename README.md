@@ -18,37 +18,11 @@ This is a rewrite of [the Go code (2021)](https://github.com/aabbtree77/twinpeek
 
 ## 2026 Update
 
-Nim and D are the most innovative projects in the "better C/C++" category.
-
-Nim 3 is now a more pragmatic and succinct Rust effectively, with default not nil and new sum types.
+Nim 3 is now a more pragmatic Rust, with default not nil and new sum types.
 
 Is this relevant in the age of AI though?
 
-AI will write Nim 2 instead of Nim 3. Nim is also tiny github-wise.
-
-Rust is clearly winning this space, and one can now find more recent and feature-complete volumetric light rendering demos with Vulkan instead of OpenGL, or even WebGPU, see e.g. [RustBakedVoxelLighting](https://github.com/SamG-Coder/RustBakedVoxelLighting). 
-
-There is also never a shortage of C++ codes in 3D, see my previous Go repository for the links, but also a few newer ones: [Luz](https://github.com/hadryansalles/Luz) and [PlainRenderer](https://github.com/Gaukler/PlainRenderer/tree/master). These two are Frostbite style 2015-based with froxels, not KillZone 2014-inspired as the code here.
-
-What is the point of all this?
-
-Consider [Unreal Engine](https://www.youtube.com/watch?v=kaUupZTEZII&t=2599s). Very powerful, and yet:
-
-- RTX 3060 12GB and 32GB RAM as "a sensible entry point". UE5 won't run on my GTX760, UE6 will only be worse.
-
-- Blueprints do not raise the abstraction level. An if condition and a big game object are nodes in UE.
-
-- [UE6](https://www.youtube.com/watch?v=i0wZCIhqveQ) is a new mess with Verse and AI.
-
-I would not rule out coding, Nim/D. 
-
-We also have to separate the current money world from a better reality we want to build. 
-
-Are we a civilization or a commercial project? 
-
-The money world always ends up with nodes concentrating power: UE, Postgres, Kafka, Akka, Vercel, AI... This is function and performance, but also fiscal quarter myopia and treadmill activities. A better reality is more decentralized, cutting off power concentrating loops and nodes, Smalltalk-ish and Erlang-ish, but not necessarily those architectures in these languages. Could be Nim, D, Go...
-
-Let us keep moving there.
+[RustBakedVoxelLighting](https://github.com/SamG-Coder/RustBakedVoxelLighting), [Luz](https://github.com/hadryansalles/Luz), [PlainRenderer?](https://github.com/Gaukler/PlainRenderer/tree/master). The latter two are Frostbite style 2015-based with froxels, not KillZone 2014-inspired as the code here.
 
 ## Dependencies and Compilation
 
