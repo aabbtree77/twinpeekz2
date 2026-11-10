@@ -375,11 +375,11 @@ The third option is remarkably simple. Set mydata.f(...) instead of the usual f(
 
 * Some food for thought:
 
-    [What is special about Nim? by Dennis Felsing](https://hookrace.net/blog/what-is-special-about-nim/)
+    [What is special about Nim?](https://hookrace.net/blog/what-is-special-about-nim/)
 
-    [Nim Nuggets: Systems Programming & Metaprogramming Magic by Aditya Siram](https://www.youtube.com/watch?v=d2VRuZo2pdA&t=15s&ab_channel=StrangeLoopConference)
+    [Nim Nuggets: Systems Programming & Metaprogramming Magic](https://www.youtube.com/watch?v=d2VRuZo2pdA&t=15s&ab_channel=StrangeLoopConference)
     
-    [Nim JSON parsing is 30 times slower than Node.JS by Alexey Petrushin](https://forum.nim-lang.org/t/8074)
+    [Nim JSON parsing is 30 times slower than Node.JS](https://forum.nim-lang.org/t/8074)
     
     Mummy: the return of the ancient way (threads vs async): [forum-nim-9683](https://forum.nim-lang.org/t/9683), [guzba](https://github.com/guzba/mummy), [niminem/neel](https://github.com/Niminem/Neel/pull/23)
     
@@ -389,7 +389,7 @@ The third option is remarkably simple. Set mydata.f(...) instead of the usual f(
     
     [The turbulent evolution of Nim's concurrency story (As of August 2025)](https://forum.nim-lang.org/t/13322)
     
-    [Andreas Rumpf: NIF, Nimony, Nim 3 (NimConf 2026)](https://youtu.be/ZYIW8YgH49w?t=512)
+    [NIF, Nimony, Nim 3 (NimConf 2026)](https://youtu.be/ZYIW8YgH49w?t=512)
     
     [Nim vs D (Nim forum)](https://forum.nim-lang.org/t/1779)
     
@@ -399,13 +399,16 @@ The third option is remarkably simple. Set mydata.f(...) instead of the usual f(
     
     [What ever happened to move semantics?](https://forum.dlang.org/thread/mailman.994.1709000944.3719.digitalmars-d@puremagic.com?page=1)
     
-    [Why Zig over Rust? by Richard Feldman](https://gist.github.com/rtfeldman/77fb430ee57b42f5f2ca973a3992532f)
+    [Why Zig over Rust?](https://gist.github.com/rtfeldman/77fb430ee57b42f5f2ca973a3992532f)
     
-    [Languages I considered using before Odin by Rickard Andersson](https://www.youtube.com/watch?v=vFFcCLzOOyw&t=3333s&ab_channel=RickardAndersson%28gonz%29)
+    [Languages I considered using before Odin](https://www.youtube.com/watch?v=vFFcCLzOOyw&t=3333s&ab_channel=RickardAndersson%28gonz%29)
     
-    [Using C in 2026 is pretty good by Rickard Andersson](https://www.youtube.com/watch?v=vBSn8T679XY&t=1508s)
+    [Using C in 2026 is pretty good](https://www.youtube.com/watch?v=vBSn8T679XY&t=1508s)
+    
+    [Why RAII Is the Wrong Abstraction](https://www.youtube.com/watch?v=f4xO24jOtt4)
     
     [Dennis Ritchie - Write in C](https://www.youtube.com/watch?v=H4YRPdRXKFs)
     
     [Why Go? #411](https://github.com/microsoft/typescript-go/discussions/411)
     
+    [I guess it's over.](https://www.youtube.com/watch?v=hlZoSp1ZJps&t=2165s)
