@@ -18,19 +18,15 @@ This is a rewrite of [the Go code (2021)](https://github.com/aabbtree77/twinpeek
 
 ## 2026 Update
 
-One can now find KillZone-2014 style volumetric lighting in [RustBakedVoxelLighting](https://github.com/SamG-Coder/RustBakedVoxelLighting), but it is Windows and RTX-centric. The Nim code here works on the GTX760. 
+One can now find KillZone-2014 style volumetric lighting in [RustBakedVoxelLighting.](https://github.com/SamG-Coder/RustBakedVoxelLighting)
 
 [Luz](https://github.com/hadryansalles/Luz) and [PlainRenderer](https://github.com/Gaukler/PlainRenderer/tree/master) also render volumetric light, but they use heavier Frostbite-2015 style methods.
 
 What is the point of all these custom 3D rendering codes and demos?
 
-Unreal is almost free for indies, but there is still what you can and cannot do, and licensing can change any day. The requirements for the editor are now 8-12GB of VRAM, and this will only get worse in time. Unreal is also very Windows-centric, and god forbid compiling anything manually. UE6, Verse, AI...
+As someone has succinctly put it: ["I miss when Unreal was just a game engine."](https://www.youtube.com/watch?v=YJq_ObekAYk)
 
-The Godot Compatibility renderer supports even GTX660, but it does not have this 3D effect. Godot is also not a tiny lean engine per se, only in reference to Unity. A lightweight 3D engine might already have hundreds of issues, see e.g. [rbfx.](https://github.com/rbfx/rbfx/issues/) 
-
-It is good to know what is needed and code only that. Otherwise, Unreal is the way, most likely.
-
-Ultimately, aiming for a minimal, reliable 3D engine might not be a good idea. "Minimal" and "3D" do not go hand in hand. 3D graphics is about "more is more": [Cyberpunk city in UE4](https://www.youtube.com/watch?v=QWd9jMvJfuM), [Cyberpunk 2077 Japantown in Rain...](https://www.youtube.com/watch?v=0gmJ_r-fXAo)
+[Cyberpunk city in UE4...](https://www.youtube.com/watch?v=QWd9jMvJfuM)
 
 ## Dependencies and Compilation
 
