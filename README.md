@@ -18,15 +18,9 @@ This is a rewrite of [the Go code (2021)](https://github.com/aabbtree77/twinpeek
 
 ## 2026 Update
 
-One can now find KillZone-2014 style volumetric lighting in [RustBakedVoxelLighting.](https://github.com/SamG-Coder/RustBakedVoxelLighting)
+For RTX video cards, KillZone-2014 style volumetric lighting is in [RustBakedVoxelLighting.](https://github.com/SamG-Coder/RustBakedVoxelLighting)
 
 [Luz](https://github.com/hadryansalles/Luz) and [PlainRenderer](https://github.com/Gaukler/PlainRenderer/tree/master) also render volumetric light, but they use heavier Frostbite-2015 style methods.
-
-What is the point of all these custom 3D rendering codes and demos?
-
-As someone has succinctly put it: ["I miss when Unreal was just a game engine."](https://www.youtube.com/watch?v=YJq_ObekAYk)
-
-[Cyberpunk city in UE4...](https://www.youtube.com/watch?v=QWd9jMvJfuM)
 
 ## Dependencies and Compilation
 
