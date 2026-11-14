@@ -18,7 +18,7 @@ This is a rewrite of [the Go code (2021)](https://github.com/aabbtree77/twinpeek
 
 ## 2026 Update
 
-For RTX cards, [RustBakedVoxelLighting](https://github.com/SamG-Coder/RustBakedVoxelLighting) also provides KillZone-2014 style volumetric lighting.
+For RTX cards, [RustBakedVoxelLighting](https://github.com/SamG-Coder/RustBakedVoxelLighting) provides KillZone-2014 style volumetric lighting.
 
 [Luz](https://github.com/hadryansalles/Luz) and [PlainRenderer](https://github.com/Gaukler/PlainRenderer/tree/master) use heavier Frostbite-2015 style methods.
 
@@ -365,9 +365,10 @@ The third option is remarkably simple. Set mydata.f(...) instead of the usual f(
   | Markdown | 1     | 95    | 0       | 235  |
   | SUM:     | 16    | 670   | 246     | 1864 |
 
-* Programming desktop 3D revolves around GLFW/SDL, GLTF/Assimp, MGL vector math, stb_image, ImGui... The elephant in the room is OpenGL/Vulkan/WebGPU, not containers with custom allocators.
 
-* Nim power users: [treeform](https://github.com/treeform?tab=repositories), [capocasa](https://github.com/capocasa?tab=repositories), [guzba](https://github.com/guzba?tab=repositories), [dom96](https://github.com/dom96?tab=repositories), [Niminem](https://github.com/Niminem?tab=repositories), [elcritch](https://github.com/elcritch?tab=repositories), [jmgomez](https://github.com/jmgomez?tab=repositories)...
+* Nim community revolves around its power users: [treeform](https://github.com/treeform?tab=repositories), [capocasa](https://github.com/capocasa?tab=repositories), [guzba](https://github.com/guzba?tab=repositories), [dom96](https://github.com/dom96?tab=repositories), [Niminem](https://github.com/Niminem?tab=repositories), [elcritch](https://github.com/elcritch?tab=repositories), [jmgomez](https://github.com/jmgomez?tab=repositories)...
+
+* They use Nim for everything: backend, frontend, desktop, 2D, 3D, P2P... The codes are very "in house", DIY, clever over clear, but the language is very succinct and versatile. For me it is like an ideal personal constructor and the only sensible language in the C/C++ space.
 
 * Nim related links:
 
