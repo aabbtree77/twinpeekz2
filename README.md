@@ -18,9 +18,11 @@ This is a rewrite of [the Go code (2021)](https://github.com/aabbtree77/twinpeek
 
 ## 2026 Update
 
-For RTX video cards, KillZone-2014 style volumetric lighting is in [RustBakedVoxelLighting.](https://github.com/SamG-Coder/RustBakedVoxelLighting)
+For RTX cards, [RustBakedVoxelLighting](https://github.com/SamG-Coder/RustBakedVoxelLighting) also provides KillZone-2014 style volumetric lighting.
 
-[Luz](https://github.com/hadryansalles/Luz) and [PlainRenderer](https://github.com/Gaukler/PlainRenderer/tree/master) also render volumetric light, but they use heavier Frostbite-2015 style methods.
+[Luz](https://github.com/hadryansalles/Luz) and [PlainRenderer](https://github.com/Gaukler/PlainRenderer/tree/master) use heavier Frostbite-2015 style methods.
+
+Most codes are complex and non-Nim.
 
 ## Dependencies and Compilation
 
@@ -365,9 +367,9 @@ The third option is remarkably simple. Set mydata.f(...) instead of the usual f(
 
 * Programming desktop 3D revolves around GLFW/SDL, GLTF/Assimp, MGL vector math, stb_image, ImGui... The elephant in the room is OpenGL/Vulkan/WebGPU, not containers with custom allocators.
 
-* Some power users: [treeform](https://github.com/treeform?tab=repositories), [capocasa](https://github.com/capocasa?tab=repositories), [guzba](https://github.com/guzba?tab=repositories), [dom96](https://github.com/dom96?tab=repositories), [Niminem](https://github.com/Niminem?tab=repositories)...
+* Nim power users: [treeform](https://github.com/treeform?tab=repositories), [capocasa](https://github.com/capocasa?tab=repositories), [guzba](https://github.com/guzba?tab=repositories), [dom96](https://github.com/dom96?tab=repositories), [Niminem](https://github.com/Niminem?tab=repositories), [elcritch](https://github.com/elcritch?tab=repositories), [jmgomez](https://github.com/jmgomez?tab=repositories)...
 
-* Some food for thought:
+* Nim related links:
 
     [What is special about Nim?](https://hookrace.net/blog/what-is-special-about-nim/)
 
@@ -384,25 +386,12 @@ The third option is remarkably simple. Set mydata.f(...) instead of the usual f(
     [The turbulent evolution of Nim's concurrency story (As of August 2025)](https://forum.nim-lang.org/t/13322)
     
     [NIF, Nimony, Nim 3 (NimConf 2026)](https://youtu.be/ZYIW8YgH49w?t=512)
-    
-    [Nim vs D (Nim forum)](https://forum.nim-lang.org/t/1779)
-    
+        
     [D vs Nim (D forum)](https://forum.dlang.org/thread/mailman.1427.1428691340.3111.digitalmars-d@puremagic.com)
     
     [D vs Nim (timotheecour)](https://github.com/timotheecour/D_vs_nim/)
     
     [What ever happened to move semantics?](https://forum.dlang.org/thread/mailman.994.1709000944.3719.digitalmars-d@puremagic.com?page=1)
+
+    [I'm excited for Nim's future!](https://www.youtube.com/watch?v=R9xTgT30pZU)
     
-    [Why Zig over Rust?](https://gist.github.com/rtfeldman/77fb430ee57b42f5f2ca973a3992532f)
-    
-    [Languages I considered using before Odin](https://www.youtube.com/watch?v=vFFcCLzOOyw&t=3333s&ab_channel=RickardAndersson%28gonz%29)
-    
-    [Using C in 2026 is pretty good](https://www.youtube.com/watch?v=vBSn8T679XY&t=1508s)
-    
-    [Why RAII Is the Wrong Abstraction](https://www.youtube.com/watch?v=f4xO24jOtt4)
-    
-    [Dennis Ritchie - Write in C](https://www.youtube.com/watch?v=H4YRPdRXKFs)
-    
-    [Why Go? #411](https://github.com/microsoft/typescript-go/discussions/411)
-    
-    [I guess it's over.](https://www.youtube.com/watch?v=hlZoSp1ZJps&t=2165s)
