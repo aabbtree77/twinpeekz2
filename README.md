@@ -366,9 +366,11 @@ The third option is remarkably simple. Set mydata.f(...) instead of the usual f(
   | SUM:     | 16    | 670   | 246     | 1864 |
 
 
-* Nim is very educational. [The forum](https://forum.nim-lang.org/t/8333) and [documentation](https://nim-lang.org/docs/tut2.html) provide insight to low level coding and language design. The Nim power users tend to write everything from scratch: [treeform](https://github.com/treeform?tab=repositories), [capocasa](https://github.com/capocasa?tab=repositories), [guzba](https://github.com/guzba?tab=repositories), [dom96](https://github.com/dom96?tab=repositories), [Niminem](https://github.com/Niminem?tab=repositories), [elcritch](https://github.com/elcritch?tab=repositories), [jmgomez](https://github.com/jmgomez?tab=repositories)... However, it gets hairy: object vs ref object, move semantics, macros, threading, async, nil, Nim 3 metaprogramming... In theory, the complexity is "opt in", but ultimately Nim is another C++.
+* Nim is very educational. [The forum](https://forum.nim-lang.org/t/8333) and [documentation](https://nim-lang.org/docs/tut2.html) provide insight to low level coding and language design. The Nim power users tend to write everything from scratch: [treeform](https://github.com/treeform?tab=repositories), [capocasa](https://github.com/capocasa?tab=repositories), [guzba](https://github.com/guzba?tab=repositories), [dom96](https://github.com/dom96?tab=repositories), [Niminem](https://github.com/Niminem?tab=repositories), [elcritch](https://github.com/elcritch?tab=repositories), [jmgomez](https://github.com/jmgomez?tab=repositories)... However, it gets hairy: [object vs ref object](https://github.com/nim-lang/Nim/blob/2c989496be02101df67afb9d542d304ce553ee46/compiler/ast.nim#L251), move semantics, macros, threading, async, nil, Nim 3 metaprogramming... 
 
-* The same holds for D. It is remarkable how similar Nim and D are in ergonomics, function, community, evolution.
+* In theory, the complexity is "opt in", but ultimately Nim is another C++. Galactic lifetime complexity.
+
+* The same holds for D. It is remarkable how similar Nim and D are in ergonomics, function, community, evolution. So much focus on compile time metaprogramming, but where exactly is this crucial? Why spend the most effort there instead of providing much-needed containers with custom allocators directly out of the box?
 
 * Nim related links:
 
