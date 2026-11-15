@@ -366,15 +366,9 @@ The third option is remarkably simple. Set mydata.f(...) instead of the usual f(
   | SUM:     | 16    | 670   | 246     | 1864 |
 
 
-* Nim community revolves around its power users: [treeform](https://github.com/treeform?tab=repositories), [capocasa](https://github.com/capocasa?tab=repositories), [guzba](https://github.com/guzba?tab=repositories), [dom96](https://github.com/dom96?tab=repositories), [Niminem](https://github.com/Niminem?tab=repositories), [elcritch](https://github.com/elcritch?tab=repositories), [jmgomez](https://github.com/jmgomez?tab=repositories)... The ambitions are high (GUI systems, 3D engines, web servers, P2P, heavy macro-based libs...), but long term maintenance and cohesiveness is not there.
+* Nim is very educational. [The forum](https://forum.nim-lang.org/t/8333) and [documentation](https://nim-lang.org/docs/tut2.html) provide insight to low level coding and language design. The Nim power users tend to write everything from scratch: [treeform](https://github.com/treeform?tab=repositories), [capocasa](https://github.com/capocasa?tab=repositories), [guzba](https://github.com/guzba?tab=repositories), [dom96](https://github.com/dom96?tab=repositories), [Niminem](https://github.com/Niminem?tab=repositories), [elcritch](https://github.com/elcritch?tab=repositories), [jmgomez](https://github.com/jmgomez?tab=repositories)... However, it gets hairy: object vs ref object, move semantics, macros, threading, async, nil, Nim 3 metaprogramming... In theory, the complexity is "opt in", but ultimately Nim is another C++.
 
-* The good: after nearly 20 years of development Nim is moving from Nim 2 to Nim 3 with: default not nil, new sum types, unified async and threading (spawn / CPS), compiler plugins... The bad: AI won't have much Nim 3 code any time soon and everything will be a mess for a while.
-
-* Macros... They are a good idea for a compiler writer, but are abused everywhere, add complexity, attract abstractionists, delegate/postpone the language core to its libraries.
-
-* Move semantics and all that C++ stuff... Nim is a language where you can create your containers with custom allocators and fancy indexing with compile time checks, but I do not want to do this. In theory this is all "opt in", but not really.
-
-* Nim and D are very succinct, mostly due to exceptions, UFCS, operator and function overloading. A function can have default parameters. No abuse of nil and error checks which are so everywhere in Go. However, I prefer Go...
+* The same holds for D. It is remarkable how similar Nim and D are in ergonomics, function, community, evolution.
 
 * Nim related links:
 
