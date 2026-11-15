@@ -22,7 +22,7 @@ For RTX cards, [RustBakedVoxelLighting](https://github.com/SamG-Coder/RustBakedV
 
 [Luz](https://github.com/hadryansalles/Luz) and [PlainRenderer](https://github.com/Gaukler/PlainRenderer/tree/master) use heavier Frostbite-2015 style methods.
 
-Most codes are complex and non-Nim.
+Ultimately, I decided to remove Nim from my arsenal. Too much power...
 
 ## Dependencies and Compilation
 
@@ -366,9 +366,15 @@ The third option is remarkably simple. Set mydata.f(...) instead of the usual f(
   | SUM:     | 16    | 670   | 246     | 1864 |
 
 
-* Nim community revolves around its power users: [treeform](https://github.com/treeform?tab=repositories), [capocasa](https://github.com/capocasa?tab=repositories), [guzba](https://github.com/guzba?tab=repositories), [dom96](https://github.com/dom96?tab=repositories), [Niminem](https://github.com/Niminem?tab=repositories), [elcritch](https://github.com/elcritch?tab=repositories), [jmgomez](https://github.com/jmgomez?tab=repositories)...
+* Nim community revolves around its power users: [treeform](https://github.com/treeform?tab=repositories), [capocasa](https://github.com/capocasa?tab=repositories), [guzba](https://github.com/guzba?tab=repositories), [dom96](https://github.com/dom96?tab=repositories), [Niminem](https://github.com/Niminem?tab=repositories), [elcritch](https://github.com/elcritch?tab=repositories), [jmgomez](https://github.com/jmgomez?tab=repositories)... The ambitions are high (GUI systems, 3D engines, web servers, P2P, heavy macro-based libs...), but long term maintenance and cohesiveness is not there.
 
-* They use Nim for everything: backend, frontend, desktop, 2D, 3D, P2P... The codes are very "in house", DIY, clever over clear, but the language is very succinct and versatile. For me it is like an ideal personal constructor and the only sensible language in the C/C++ space.
+* The good: after nearly 20 years of development Nim is moving from Nim 2 to Nim 3 with: default not nil, new sum types, unified async and threading (spawn / CPS), compiler plugins... The bad: AI won't have much Nim 3 code any time soon and everything will be a mess for a while.
+
+* Macros... They are a good idea for a compiler writer, but are abused everywhere, add complexity, attract abstractionists, delegate/postpone the language core to its libraries.
+
+* Move semantics and all that C++ stuff... Nim is a language where you can create your containers with custom allocators and fancy indexing with compile time checks, but I do not want to do this. In theory this is all "opt in", but not really.
+
+* Nim and D are very succinct, mostly due to exceptions, UFCS, operator and function overloading. A function can have default parameters. No abuse of nil and error checks which are so everywhere in Go. However, I prefer Go...
 
 * Nim related links:
 
