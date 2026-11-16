@@ -24,6 +24,12 @@ For RTX cards, [RustBakedVoxelLighting](https://github.com/SamG-Coder/RustBakedV
 
 Ultimately, I decided to remove Nim from my arsenal. Too much power...
 
+For anything not Unreal, Go is very attractive. There are two choices:
+
+- target weaker devices with OpenGL/WebGL via [go-gl](https://github.com/go-gl), see e.g. [twinpeekz.](https://github.com/aabbtree77/twinpeekz) The codes are there and they are battle tested, but they evoke the cgo mechanism which makes Go harder to cross-compile. OpenGL/WebGL is still not that easy to write and debug.
+
+- target everything modern with WebGPU via [gogpu](https://github.com/gogpu/). This implements WebGPU for all the graphics backends (Vulkan, DX12...). It does not rely on the cgo (uses a more portable goffi underneath). Very recent, but already in use by [ironwail-go](https://github.com/darkliquid/ironwail-go) (Quake port).  
+
 ## Dependencies and Compilation
 
 To run this code, you will need to prepare `Sponza.gltf` as indicated in [the Go code (2021)](https://github.com/aabbtree77/twinpeekz). Afterwards, adjust the absolute path and possibly file name inside this repo file `scene.nim`, lines 382, 383. Mine are the following:
