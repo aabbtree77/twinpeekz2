@@ -366,13 +366,9 @@ The third option is remarkably simple. Set mydata.f(...) instead of the usual f(
   | SUM:     | 16    | 670   | 246     | 1864 |
 
 
-* Nim is very educational. [The forum](https://forum.nim-lang.org/t/8333) and [documentation](https://nim-lang.org/docs/tut2.html) provide insight to low level coding and language design. The Nim power users tend to write everything from scratch: [treeform](https://github.com/treeform?tab=repositories), [capocasa](https://github.com/capocasa?tab=repositories), [guzba](https://github.com/guzba?tab=repositories), [dom96](https://github.com/dom96?tab=repositories), [Niminem](https://github.com/Niminem?tab=repositories), [elcritch](https://github.com/elcritch?tab=repositories), [jmgomez](https://github.com/jmgomez?tab=repositories)... However, it gets hairy: [object vs ref object](https://github.com/nim-lang/Nim/blob/2c989496be02101df67afb9d542d304ce553ee46/compiler/ast.nim#L251), move semantics, macros, threading, async, nil, Nim 3 metaprogramming... 
-
-* In theory, the complexity is "opt in", but ultimately Nim is another C++. Galactic lifetime complexity. A huge gap between a compiler creator/evolver and the needs of an actual language user.
-
-* The same holds for D. It is remarkable how similar Nim and D are in ergonomics, function, community, evolution. So much focus on compile time metaprogramming, but where exactly is this crucial? Why spend the most effort there instead of, say, providing much-needed containers with custom allocators directly out of the box?
-
 * Nim related links:
+
+    [The forum](https://forum.nim-lang.org/t/8333), [documentation](https://nim-lang.org/docs/tut2.html), power users: [treeform](https://github.com/treeform?tab=repositories), [capocasa](https://github.com/capocasa?tab=repositories), [guzba](https://github.com/guzba?tab=repositories), [dom96](https://github.com/dom96?tab=repositories), [Niminem](https://github.com/Niminem?tab=repositories), [elcritch](https://github.com/elcritch?tab=repositories), [jmgomez](https://github.com/jmgomez?tab=repositories)...
 
     [What is special about Nim?](https://hookrace.net/blog/what-is-special-about-nim/)
 
@@ -380,9 +376,11 @@ The third option is remarkably simple. Set mydata.f(...) instead of the usual f(
     
     [Nim JSON parsing is 30 times slower than Node.JS](https://forum.nim-lang.org/t/8074)
     
-    Mummy: the return of the ancient way (threads vs async): [forum-nim-9683](https://forum.nim-lang.org/t/9683), [guzba](https://github.com/guzba/mummy), [niminem/neel](https://github.com/Niminem/Neel/pull/23)
+    Threading: [forum-nim-9683](https://forum.nim-lang.org/t/9683), [guzba](https://github.com/guzba/mummy), [niminem/neel](https://github.com/Niminem/Neel/pull/23)
     
     [Nim Destructors](https://nim-lang.org/docs/destructors.html)
+    
+    [object vs ref object, see the comment about shared mutation in the Nim AST code](https://github.com/nim-lang/Nim/blob/2c989496be02101df67afb9d542d304ce553ee46/compiler/ast.nim#L251)
     
     [Nim 2.0: "Dynamic data structures are pointers on the stack to heap data, where the lifetime is managed by the stack frame."](https://news.ycombinator.com/item?id=36955806)
     
