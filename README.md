@@ -368,7 +368,9 @@ The third option is remarkably simple. Set mydata.f(...) instead of the usual f(
 
 * Nim related links:
 
-    [The forum](https://forum.nim-lang.org/t/8333), [documentation](https://nim-lang.org/docs/tut2.html), power users: [treeform](https://github.com/treeform?tab=repositories), [capocasa](https://github.com/capocasa?tab=repositories), [guzba](https://github.com/guzba?tab=repositories), [dom96](https://github.com/dom96?tab=repositories), [Niminem](https://github.com/Niminem?tab=repositories), [elcritch](https://github.com/elcritch?tab=repositories), [jmgomez](https://github.com/jmgomez?tab=repositories)...
+    [The forum](https://forum.nim-lang.org/t/8333), [documentation](https://nim-lang.org/docs/tut2.html)
+    
+    [treeform](https://github.com/treeform?tab=repositories), [capocasa](https://github.com/capocasa?tab=repositories), [guzba](https://github.com/guzba?tab=repositories), [dom96](https://github.com/dom96?tab=repositories), [Niminem](https://github.com/Niminem?tab=repositories), [elcritch](https://github.com/elcritch?tab=repositories), [jmgomez](https://github.com/jmgomez?tab=repositories)...
 
     [What is special about Nim?](https://hookrace.net/blog/what-is-special-about-nim/)
 
@@ -376,7 +378,7 @@ The third option is remarkably simple. Set mydata.f(...) instead of the usual f(
     
     [Nim JSON parsing is 30 times slower than Node.JS](https://forum.nim-lang.org/t/8074)
     
-    Threading: [forum-nim-9683](https://forum.nim-lang.org/t/9683), [guzba](https://github.com/guzba/mummy), [niminem/neel](https://github.com/Niminem/Neel/pull/23)
+    [forum-nim-9683](https://forum.nim-lang.org/t/9683), [mummy](https://github.com/guzba/mummy), [neel](https://github.com/Niminem/Neel/pull/23)
     
     [Nim Destructors](https://nim-lang.org/docs/destructors.html)
     
