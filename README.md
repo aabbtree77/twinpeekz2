@@ -22,13 +22,23 @@ For RTX cards, [RustBakedVoxelLighting](https://github.com/SamG-Coder/RustBakedV
 
 [Luz](https://github.com/hadryansalles/Luz) and [PlainRenderer](https://github.com/Gaukler/PlainRenderer/tree/master) use heavier Frostbite-2015 style methods.
 
-Ultimately, I decided to remove Nim from my arsenal. Too much power...
-
 For anything not Unreal, Go is very attractive. There are two choices:
 
 - target weaker devices with OpenGL/WebGL via [go-gl](https://github.com/go-gl), see e.g. [twinpeekz.](https://github.com/aabbtree77/twinpeekz) The codes are there and they are battle tested, but they evoke the cgo mechanism which makes Go harder to cross-compile. OpenGL/WebGL is still not that easy to write and debug.
 
-- target everything modern with WebGPU via [gogpu](https://github.com/gogpu/). This implements WebGPU for all the graphics backends (Vulkan, DX12...). It does not rely on the cgo (uses a more portable goffi underneath). Very recent, but already in use by [ironwail-go](https://github.com/darkliquid/ironwail-go) (Quake port).  
+- target everything modern with WebGPU via [gogpu](https://github.com/gogpu/). This implements WebGPU for all the graphics backends (Vulkan, DX12...). It does not rely on the cgo (uses a more portable goffi underneath). Very recent, but already in use by [ironwail-go](https://github.com/darkliquid/ironwail-go) (Quake port). 
+
+The problem with Go is that it does not get mutability right. All we need is struct, func, slices and maps, the latter two are dynamic and associative arrays. Once we start passing these two around inside struct, it becomes very hard to see what gets modified where in Go. One must write custom deep copy helpers, but these are never reliable since the programmer must know the complete aliasing structure of the value to implement a proper copy.
+
+To make something read-only, one starts writing Java in Go, plus the language itself is moving there, [sadly](https://www.youtube.com/watch?v=WqSWZuGS9pc&t=411s&pp=ygUQcHJpbWFnZWFuIGdvbGFuZw%3D%3D).
+
+Nim and Swift get this moment right. F# is schizoidal with C# underneath it. D somewhat complicates things.
+
+The problem is, these better ones are all very big, with a lot of nonsense. They add classes, which is roughly `ref object` vs `object` in Nim. This alone kills the value semantics ideal. One can always choose a minimal subset in these which will be a more reliable Go without Rust complexity, but the subset won't match the codebases in the wild, if you find any...
+
+Go is vastly more readable in general, and will compile faster than anything, not to mention a large community and the most solid concurrency/parallelism story, but the mutation problem is there. 
+
+There are no answers, only choices...
 
 ## Dependencies and Compilation
 
