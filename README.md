@@ -22,15 +22,19 @@ For RTX cards, [RustBakedVoxelLighting](https://github.com/SamG-Coder/RustBakedV
 
 [Luz](https://github.com/hadryansalles/Luz) and [PlainRenderer](https://github.com/Gaukler/PlainRenderer/tree/master) use heavier Frostbite-2015 style methods.
 
-I have considered Nim (see below), D, F#, and Swift, but ultimately Go is the answer:
+Nim now has more options for 3D rendering: [semicongine](https://forum.nim-lang.org/t/11881) (Vulkan-based, shipped Cosmic Breakout on Steam), [frag](https://forum.nim-lang.org/t/13931) (Metal, GL, D3D11, WebGPU), [polyworld](https://github.com/softmax-universe/polyworld), [alasgar](https://github.com/abisxir/alasgar)...
 
-- target weaker devices with OpenGL/WebGL via [go-gl](https://github.com/go-gl), see e.g. [twinpeekz.](https://github.com/aabbtree77/twinpeekz) The codes are there and they are battle tested, but they evoke the cgo mechanism which makes Go harder to cross-compile. OpenGL/WebGL is still not that easy to write and debug.
+The problem is, Nim is a language of galactic complexity: CTFE, macros, move semantics... Remarkably close to D w.r.t. ergonomics, function, forum discussions, evolution. 
 
-- target everything modern with WebGPU via [gogpu](https://github.com/gogpu/). This implements WebGPU for all the graphics backends (Vulkan, DX12...). It does not rely on the cgo (uses a more portable goffi underneath). Very recent, but already in use by [ironwail-go](https://github.com/darkliquid/ironwail-go) (Quake port). 
+What is weird is that we never seem to have any shortage of very complex languages: C++, Ada, Rust, Swift, F#... 
 
-Why Go? It attracts the right kind of people - pragmatic engineers. The Go 1.17 subset with [Uber Go Style Guide](https://github.com/uber-go/guide/blob/master/style.md) is the thing, no need to waste time on [parametric anything.](https://arxiv.org/abs/2005.11710)
+For something new, see [Aether](https://github.com/aether-lang-dev/). It has its 3D engine [ae3d](https://github.com/aether-lang-dev/ae3d) and 2D engine [aebiten](https://github.com/aether-lang-dev/aebiten) (a rewrite of Go's [ebiten](https://github.com/hajimehoshi/ebiten)). 
 
-Go in 2D/3D: [gokoban](https://github.com/danaugrs/gokoban), [kaiju](https://github.com/KaijuEngine/kaiju), [ebiten](https://github.com/hajimehoshi/ebiten), [wails](https://github.com/wailsapp/wails), [fogleman](https://github.com/fogleman?tab=repositories)...
+UE6 with Verse coming soon.
+
+Totally not a problem to find an extremely complex system, but where are the simpler ones?
+
+Back to Go...
 
 ## Dependencies and Compilation
 
@@ -378,11 +382,13 @@ The third option is remarkably simple. Set mydata.f(...) instead of the usual f(
 
     [The forum](https://forum.nim-lang.org/t/8333), [documentation](https://nim-lang.org/docs/tut2.html)
     
-    [treeform](https://github.com/treeform?tab=repositories), [capocasa](https://github.com/capocasa?tab=repositories), [guzba](https://github.com/guzba?tab=repositories), [dom96](https://github.com/dom96?tab=repositories), [Niminem](https://github.com/Niminem?tab=repositories), [elcritch](https://github.com/elcritch?tab=repositories), [jmgomez](https://github.com/jmgomez?tab=repositories)...
+    [treeform](https://github.com/treeform?tab=repositories), [capocasa](https://github.com/capocasa?tab=repositories), [guzba](https://github.com/guzba?tab=repositories), [dom96](https://github.com/dom96?tab=repositories), [Niminem](https://github.com/Niminem?tab=repositories), [elcritch](https://github.com/elcritch?tab=repositories), [jmgomez](https://github.com/jmgomez?tab=repositories), [planetis-m](https://github.com/planetis-m?tab=repositories), [yglukhov](https://github.com/yglukhov?tab=repositories)...
 
     [What is special about Nim?](https://hookrace.net/blog/what-is-special-about-nim/)
 
     [Nim Nuggets: Systems Programming & Metaprogramming Magic](https://www.youtube.com/watch?v=d2VRuZo2pdA&t=15s&ab_channel=StrangeLoopConference)
+
+    [jackmott/easygl](https://github.com/jackmott/easygl/tree/master)
     
     [Nim JSON parsing is 30 times slower than Node.JS](https://forum.nim-lang.org/t/8074)
     
