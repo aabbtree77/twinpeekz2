@@ -26,13 +26,9 @@ Nim now has more options for 3D rendering: [semicongine](https://forum.nim-lang.
 
 The problem is, Nim is a language of galactic complexity: CTFE, macros, move semantics... Remarkably close to D w.r.t. ergonomics, function, forum discussions, evolution. 
 
-What is weird is that we never seem to have any shortage of very complex languages: C++, Ada, Rust, Swift, F#... 
+What is weird is that we never seem to have any shortage of complex languages: C++, D, Nim, Carbon, Ada, Rust, Haskell, PureScript, ATS, Inko, Cubical Agda, Lean 4, Perl 6, Idris, F*, F#, OCaml, Scala, Common Lisp, Clojure, Dylan, Cyclone, Pony, Java, C#, Swift, Ts, Verse (UE6)... For the most recent, see [Aether](https://github.com/aether-lang-dev/). It has its 3D engine [ae3d](https://github.com/aether-lang-dev/ae3d) and 2D engine [aebiten](https://github.com/aether-lang-dev/aebiten) (a rewrite of Go's [ebiten](https://github.com/hajimehoshi/ebiten)). 
 
-For something new, see [Aether](https://github.com/aether-lang-dev/). It has its 3D engine [ae3d](https://github.com/aether-lang-dev/ae3d) and 2D engine [aebiten](https://github.com/aether-lang-dev/aebiten) (a rewrite of Go's [ebiten](https://github.com/hajimehoshi/ebiten)). 
-
-UE6 with Verse coming soon.
-
-Totally not a problem to find an extremely complex system, but where are the simpler ones?
+It is totally not a problem to find an extremely complex system, but where are the simpler ones?
 
 Back to Go...
 
