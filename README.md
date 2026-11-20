@@ -22,13 +22,7 @@ For RTX cards, [RustBakedVoxelLighting](https://github.com/SamG-Coder/RustBakedV
 
 [Luz](https://github.com/hadryansalles/Luz) and [PlainRenderer](https://github.com/Gaukler/PlainRenderer/tree/master) use heavier Frostbite-2015 style methods.
 
-Nim now has more options for 3D rendering: [semicongine](https://forum.nim-lang.org/t/11881) (Vulkan-based, shipped Cosmic Breakout on Steam), [frag](https://forum.nim-lang.org/t/13931) (Metal, GL, D3D11, WebGPU), [polyworld](https://github.com/softmax-universe/polyworld), [alasgar](https://github.com/abisxir/alasgar)...
-
-The problem is, Nim is a language of galactic complexity: CTFE, macros, move semantics... Remarkably close to D w.r.t. ergonomics, function, forum discussions, evolution. 
-
-What is weird is that we never seem to have any shortage of complex languages: C++, D, Nim, Carbon, Ada, Rust, Haskell, PureScript, ATS, Inko, Cubical Agda, Lean 4, Perl 6, Idris, F*, F#, OCaml, Scala, Common Lisp, Clojure, Dylan, Cyclone, Pony, Java, C#, Swift, Ts, Verse (UE6)... For the most recent, see [Aether](https://github.com/aether-lang-dev/). It has its 3D engine [ae3d](https://github.com/aether-lang-dev/ae3d) and 2D engine [aebiten](https://github.com/aether-lang-dev/aebiten) (a rewrite of Go's [ebiten](https://github.com/hajimehoshi/ebiten)). 
-
-It is totally not a problem to find an extremely complex system, but where are the simpler ones?
+Nim now has more options for 3D rendering: [semicongine](https://forum.nim-lang.org/t/11881) (Vulkan-based, shipped Cosmic Breakout on Steam), [frag](https://forum.nim-lang.org/t/13931) (Metal, GL, D3D11, WebGPU), [polyworld](https://github.com/softmax-universe/polyworld), [alasgar](https://github.com/abisxir/alasgar). Lots of complexity, zero users.
 
 Back to Go...
 
