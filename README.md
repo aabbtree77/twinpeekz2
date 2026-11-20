@@ -22,7 +22,13 @@ For RTX cards, [RustBakedVoxelLighting](https://github.com/SamG-Coder/RustBakedV
 
 [Luz](https://github.com/hadryansalles/Luz) and [PlainRenderer](https://github.com/Gaukler/PlainRenderer/tree/master) use heavier Frostbite-2015 style methods.
 
-Nim now has more options for 3D rendering: [semicongine](https://forum.nim-lang.org/t/11881) (Vulkan-based, shipped Cosmic Breakout on Steam), [frag](https://forum.nim-lang.org/t/13931) (Metal, GL, D3D11, WebGPU), [polyworld](https://github.com/softmax-universe/polyworld), [alasgar](https://github.com/abisxir/alasgar). Lots of complexity, zero users.
+Nim now has more options for 3D rendering: [semicongine](https://forum.nim-lang.org/t/11881) (Vulkan-based, shipped Cosmic Breakout on Steam), [frag](https://forum.nim-lang.org/t/13931) (Metal, GL, D3D11, WebGPU), [polyworld](https://github.com/softmax-universe/polyworld), [alasgar](https://github.com/abisxir/alasgar).
+
+
+> Empty spaces, what are we living for?
+> Abandoned places, I guess we know the score
+> On and on
+> Does anybody know what we are looking for?
 
 Back to Go...
 
