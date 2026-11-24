@@ -22,12 +22,14 @@ For RTX cards, [RustBakedVoxelLighting](https://github.com/SamG-Coder/RustBakedV
 
 [Luz](https://github.com/hadryansalles/Luz) and [PlainRenderer](https://github.com/Gaukler/PlainRenderer/tree/master) use heavier Frostbite-2015 style methods.
 
-Nim now has more options for 3D rendering: [semicongine](https://forum.nim-lang.org/t/11881), [frag](https://forum.nim-lang.org/t/13931), [polyworld](https://github.com/softmax-universe/polyworld), [alasgar](https://github.com/abisxir/alasgar)... None of this feels like something to rely on.
+Nim now has more options for 3D rendering: [semicongine](https://forum.nim-lang.org/t/11881), [frag](https://forum.nim-lang.org/t/13931), [polyworld](https://github.com/softmax-universe/polyworld), [alasgar](https://github.com/abisxir/alasgar)...
 
 > Empty spaces, what are we living for?<br>
 > Abandoned places, I guess we know the score<br>
 > On and on<br>
 > Does anybody know what we are looking for?<br>
+
+Back to Go...
 
 ## Dependencies and Compilation
 
