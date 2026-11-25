@@ -29,8 +29,6 @@ Nim now has more options for 3D rendering: [semicongine](https://forum.nim-lang.
 > On and on<br>
 > Does anybody know what we are looking for?<br>
 
-Back to Go...
-
 ## Dependencies and Compilation
 
 To run this code, you will need to prepare `Sponza.gltf` as indicated in [the Go code (2021)](https://github.com/aabbtree77/twinpeekz). Afterwards, adjust the absolute path and possibly file name inside this repo file `scene.nim`, lines 382, 383. Mine are the following:
